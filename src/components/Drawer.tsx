@@ -1,5 +1,12 @@
 import React, { useState, SyntheticEvent } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import {
+  useHistory,
+  Link,
+  Switch,
+  Route,
+  useRouteMatch,
+  useParams,
+} from 'react-router-dom';
 
 import clsx from 'clsx';
 import {
@@ -27,7 +34,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-import Dashboard from './Dashboard';
+import Home from './Home';
+import Parent from './Parent';
 
 const drawerWidth = 240;
 
@@ -119,6 +127,8 @@ const PersistentDrawerLeft = () => {
   const [open, setOpen] = useState(false);
   const history = useHistory();
 
+  let { path, url } = useRouteMatch();
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -131,6 +141,7 @@ const PersistentDrawerLeft = () => {
     event.preventDefault();
     history.push('/');
   };
+  console.log(history);
 
   return (
     <div className={classes.root}>
@@ -176,13 +187,21 @@ const PersistentDrawerLeft = () => {
         </div>
         <Divider />
         <List>
-          {['Dashboard', 'Utilities', 'Account'].map((text) => (
-            <ListItem button key={text}>
-              <Link className={classes.link} to={`/${text}`}>
-                <ListItemText primary={text} />
-              </Link>
-            </ListItem>
-          ))}
+          <ListItem button>
+            <Link className={classes.link} to={`${url}/dashboard`}>
+              <ListItemText primary="Dashboard" />
+            </Link>
+          </ListItem>
+          <ListItem button>
+            <Link className={classes.link} to={`${url}/utilities`}>
+              <ListItemText primary="Utilities" />
+            </Link>
+          </ListItem>
+          <ListItem button>
+            <Link className={classes.link} to={`${url}/account`}>
+              <ListItemText primary="Account" />
+            </Link>
+          </ListItem>
         </List>
         <Divider />
         <Button
@@ -202,9 +221,15 @@ const PersistentDrawerLeft = () => {
         <div className={classes.drawerHeader} />
         <Container component="main" maxWidth="xs">
           <CssBaseline />
-          <Dashboard />
+          <Home />
         </Container>
       </main>
+
+      <Switch>
+        <Route path={`${path}/:id`}>
+          <Parent />
+        </Route>
+      </Switch>
     </div>
   );
 };

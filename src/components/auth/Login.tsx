@@ -54,13 +54,9 @@ export default function SignIn() {
 
   const handleLogin = (event: SyntheticEvent) => {
     event.preventDefault();
-    history.push('/dashboard');
+    history.push('/home');
   };
 
-  const handleSignup = (event: SyntheticEvent) => {
-    event.preventDefault();
-    history.push('/signup');
-  };
   console.log(history);
   return (
     <Container component="main" maxWidth="xs">
@@ -114,11 +110,11 @@ export default function SignIn() {
                 Forgot password?
               </Link>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <Link onClick={handleSignup} href="/#" variant="body2">
                 Don&apos;t have an account? Sign Up
               </Link>
-            </Grid>
+            </Grid> */}
           </Grid>
         </form>
       </div>
