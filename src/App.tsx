@@ -20,7 +20,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Switch>
         <Route path="/" exact component={Login} />
-        <Route path="/home" exact component={Drawer} />
+        <Route path="/home" component={Drawer} />
       </Switch>
     </ThemeProvider>
   );

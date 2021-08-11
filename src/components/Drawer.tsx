@@ -5,7 +5,6 @@ import {
   Switch,
   Route,
   useRouteMatch,
-  useParams,
 } from 'react-router-dom';
 
 import clsx from 'clsx';
@@ -34,8 +33,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-import Home from './Home';
-import Parent from './Parent';
+import Dashboard from './Dashboard';
+import HomeContainer from './HomeContainer';
 
 const drawerWidth = 240;
 
@@ -121,12 +120,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const PersistentDrawerLeft = () => {
+const DrawerLeft = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const history = useHistory();
 
+  // eslint-disable-next-line prefer-const
   let { path, url } = useRouteMatch();
 
   const handleDrawerOpen = () => {
@@ -142,6 +142,7 @@ const PersistentDrawerLeft = () => {
     history.push('/');
   };
   console.log(history);
+  console.log('url', url);
 
   return (
     <div className={classes.root}>
@@ -188,17 +189,17 @@ const PersistentDrawerLeft = () => {
         <Divider />
         <List>
           <ListItem button>
-            <Link className={classes.link} to={`${url}/dashboard`}>
+            <Link className={classes.link} to={`${url}/dashboard`} replace>
               <ListItemText primary="Dashboard" />
             </Link>
           </ListItem>
           <ListItem button>
-            <Link className={classes.link} to={`${url}/utilities`}>
+            <Link className={classes.link} to={`${url}/utilities`} replace>
               <ListItemText primary="Utilities" />
             </Link>
           </ListItem>
           <ListItem button>
-            <Link className={classes.link} to={`${url}/account`}>
+            <Link className={classes.link} to={`${url}/account`} replace>
               <ListItemText primary="Account" />
             </Link>
           </ListItem>
@@ -221,17 +222,18 @@ const PersistentDrawerLeft = () => {
         <div className={classes.drawerHeader} />
         <Container component="main" maxWidth="xs">
           <CssBaseline />
-          <Home />
+          <Dashboard />
         </Container>
       </main>
 
       <Switch>
+        <Route path={path} exact />
         <Route path={`${path}/:id`}>
-          <Parent />
+          <HomeContainer />
         </Route>
       </Switch>
     </div>
   );
 };
 
-export default PersistentDrawerLeft;
+export default DrawerLeft;

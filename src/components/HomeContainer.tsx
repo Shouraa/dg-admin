@@ -5,10 +5,10 @@ import { useParams } from 'react-router-dom';
 // import Utilities from './Utilities';
 // import Account from './Account';
 
-const Parent = () => {
+const HomeContainer = () => {
+  // eslint-disable-next-line prefer-const
   let { id } = useParams();
-  console.log('id', id);
   return <Typography variant="h1">{id}</Typography>;
 };
 
-export default Parent;
+export default HomeContainer;
