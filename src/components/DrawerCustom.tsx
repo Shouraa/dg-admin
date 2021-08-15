@@ -1,11 +1,5 @@
 import React, { useState, SyntheticEvent } from 'react';
-import {
-  useHistory,
-  Link,
-  Switch,
-  Route,
-  useRouteMatch,
-} from 'react-router-dom';
+import { useHistory, Link, useRouteMatch } from 'react-router-dom';
 
 import clsx from 'clsx';
 import {
@@ -25,16 +19,13 @@ import {
   Button,
   ListItemText,
   ListItem,
-  CssBaseline,
-  Container,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { AuthRoutes } from '../routes';
+import { autoUpdater } from 'electron-updater';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
-import Dashboard from './Dashboard';
-import HomeContainer from './HomeContainer';
 
 const drawerWidth = 240;
 
@@ -100,27 +91,19 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       alignItems: 'center',
     },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(1),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
     logout: {
       margin: '1.5em 2.5em',
     },
     link: {
       color: theme.palette.primary.main,
+      width: '100%',
+      display: 'block',
+      margin: 0,
     },
   })
 );
 
-const DrawerLeft = () => {
+const DrawerCustom = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -146,7 +129,6 @@ const DrawerLeft = () => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -189,17 +171,17 @@ const DrawerLeft = () => {
         <Divider />
         <List>
           <ListItem button>
-            <Link className={classes.link} to={`${url}/dashboard`} replace>
+            <Link className={classes.link} to={AuthRoutes.dashboard}>
               <ListItemText primary="Dashboard" />
             </Link>
           </ListItem>
           <ListItem button>
-            <Link className={classes.link} to={`${url}/utilities`} replace>
+            <Link className={classes.link} to={AuthRoutes.utilities}>
               <ListItemText primary="Utilities" />
             </Link>
           </ListItem>
           <ListItem button>
-            <Link className={classes.link} to={`${url}/account`} replace>
+            <Link className={classes.link} to={AuthRoutes.account}>
               <ListItemText primary="Account" />
             </Link>
           </ListItem>
@@ -220,20 +202,9 @@ const DrawerLeft = () => {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Dashboard />
-        </Container>
       </main>
-
-      <Switch>
-        <Route path={path} exact />
-        <Route path={`${path}/:id`}>
-          <HomeContainer />
-        </Route>
-      </Switch>
     </div>
   );
 };
 
-export default DrawerLeft;
+export default DrawerCustom;

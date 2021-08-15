@@ -5,9 +5,12 @@ import { useParams } from 'react-router-dom';
 // import Utilities from './Utilities';
 // import Account from './Account';
 
+interface ParamTypes {
+  id: string | undefined;
+}
+
 const HomeContainer = () => {
-  // eslint-disable-next-line prefer-const
-  let { id } = useParams();
+  const { id } = useParams<ParamTypes>();
   return <Typography variant="h1">{id}</Typography>;
 };
 
