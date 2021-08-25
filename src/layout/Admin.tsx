@@ -8,7 +8,7 @@ const DashboardContainer = lazy(() => import('../components/Dashboard'));
 const UtilitiesContainer = lazy(() => import('../components/Utilities'));
 const AccountContainer = lazy(() => import('../components/Account'));
 
-const Admin = () => {
+const Admin: React.FC = () => {
   return (
     <Suspense fallback="...loading">
       <DrawerCustom />

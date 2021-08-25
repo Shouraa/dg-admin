@@ -23,8 +23,8 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import { autoUpdater } from 'electron-updater';
 import { AuthRoutes } from '../routes';
-import { autoUpdater } from 'electron-updater';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const drawerWidth = 240;
@@ -110,7 +110,7 @@ const DrawerCustom = () => {
   const history = useHistory();
 
   // eslint-disable-next-line prefer-const
-  let { path, url } = useRouteMatch();
+  let { url } = useRouteMatch();
 
   const handleDrawerOpen = () => {
     setOpen(true);
