@@ -10,21 +10,20 @@ import {
 } from '@material-ui/core/styles';
 import {
   Drawer,
-  AppBar,
-  Toolbar,
   List,
-  Typography,
   Divider,
   IconButton,
   Button,
   ListItemText,
   ListItem,
+  Hidden,
+  Paper,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // import { autoUpdater } from 'electron-updater';
-import { AuthRoutes } from '../routes';
+import { AuthRoutes } from '../../routes';
+import AppBarCustom from '../Header/AppBarCustom/AppBarCustom';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const drawerWidth = 240;
@@ -34,26 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: 'flex',
     },
-    appBar: {
-      transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-    },
-    appBarShift: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-      transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    hide: {
-      display: 'none',
-    },
+
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
@@ -100,26 +80,26 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'block',
       margin: 0,
     },
+    logo: {
+      maxWidth: 160,
+    },
   })
 );
 
 const DrawerCustom = () => {
+  const [open, setOpen] = useState(false);
+
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+
   const history = useHistory();
 
   // eslint-disable-next-line prefer-const
   let { url } = useRouteMatch();
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   const handleLogout = (event: SyntheticEvent) => {
     event.preventDefault();
     history.push('/');
@@ -129,27 +109,7 @@ const DrawerCustom = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Darkglass Admin
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <AppBarCustom open={open} setOpen={setOpen} />
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -160,6 +120,14 @@ const DrawerCustom = () => {
         }}
       >
         <div className={classes.drawerHeader}>
+          <Paper variant="outlined">
+            <img
+              src="../../../assets/imgs/logo.jpg"
+              alt="logo"
+              className={classes.logo}
+            />
+          </Paper>
+
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? (
               <ChevronLeftIcon />
@@ -178,6 +146,24 @@ const DrawerCustom = () => {
           <ListItem button>
             <Link className={classes.link} to={AuthRoutes.utilities}>
               <ListItemText primary="Utilities" />
+            </Link>
+          </ListItem>
+          <ListItem button>
+            <Link className={classes.link} to={AuthRoutes.account}>
+              <ListItemText primary="Whatever" />
+            </Link>
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button>
+            <Link className={classes.link} to={AuthRoutes.dashboard}>
+              <ListItemText primary="Notifications" />
+            </Link>
+          </ListItem>
+          <ListItem button>
+            <Link className={classes.link} to={AuthRoutes.utilities}>
+              <ListItemText primary="Messages" />
             </Link>
           </ListItem>
           <ListItem button>
