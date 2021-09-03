@@ -13,6 +13,11 @@ const Account = React.lazy(() =>
 
 const routes = [
   {
+    path: `${AuthRoutes.admin}`,
+    name: 'Admin',
+    exact: true,
+  },
+  {
     path: `${AuthRoutes.dashboard}`,
     name: 'Dashboard',
     component: Dashboard,

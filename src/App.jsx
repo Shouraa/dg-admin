@@ -22,7 +22,7 @@ export default function App() {
         <Switch>
           <Route exact path={NonAuthRoutes.login} component={Auth} />
           <Route
-            path={AuthRoutes.dashboard}
+            path={AuthRoutes.admin}
             render={(props) => <DefaultLayout {...props} />}
           />
 

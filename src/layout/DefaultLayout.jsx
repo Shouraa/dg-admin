@@ -8,10 +8,7 @@ const DefaultLayout = () => {
     <div>
       <AppDrawer />
       <div>
-        <AppBarCustom />
-        <div>
-          <AppContent />
-        </div>
+        <AppContent />
       </div>
     </div>
   );
