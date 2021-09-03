@@ -19,12 +19,8 @@ import Profile from '../HeaderSections/Profile';
 import Messages from '../HeaderSections/Messages';
 import { useStyles } from '../HeaderStyles/HeaderStyles';
 
-function AppBarCustom({ open, setOpen }) {
+function AppBarCustom({ open, openDrawer }) {
   const classes = useStyles();
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
   return (
     <div className={classes.root}>
@@ -38,7 +34,7 @@ function AppBarCustom({ open, setOpen }) {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={openDrawer}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >

@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
-import DrawerCustom from '../components/DrawerCustom/DrawerCustom';
+import AppDrawer from '../components/AppDrawer/AppDrawer';
 import PrivateRoute from '../components/PrivateRoute';
 import { AuthRoutes } from '../routes/index';
 
@@ -17,7 +17,7 @@ const AccountContainer = lazy(() =>
 const Admin: React.FC = () => {
   return (
     <Suspense fallback="...loading">
-      <DrawerCustom />
+      <AppDrawer />
       <Switch>
         <PrivateRoute
           path={AuthRoutes.dashboard}

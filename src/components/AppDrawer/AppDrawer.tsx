@@ -16,13 +16,11 @@ import {
   Button,
   ListItemText,
   ListItem,
-  Hidden,
-  Paper,
 } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // import { autoUpdater } from 'electron-updater';
-import { AuthRoutes } from '../../routes';
+import { AuthRoutes } from '../../routes/paths';
 import AppBarCustom from '../Header/AppBarCustom/AppBarCustom';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
@@ -86,8 +84,8 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const DrawerCustom = () => {
-  const [open, setOpen] = useState(false);
+const AppDrawer = () => {
+  const [open, setOpen] = useState(true);
 
   const classes = useStyles();
   const theme = useTheme();
@@ -104,12 +102,17 @@ const DrawerCustom = () => {
     event.preventDefault();
     history.push('/');
   };
-  console.log(history);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  console.log('history', history);
   console.log('url', url);
 
   return (
     <div className={classes.root}>
-      <AppBarCustom open={open} setOpen={setOpen} />
+      <AppBarCustom open={open} openDrawer={handleDrawerOpen} />
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -120,13 +123,13 @@ const DrawerCustom = () => {
         }}
       >
         <div className={classes.drawerHeader}>
-          <Paper variant="outlined">
+          {/* <Paper variant="outlined">
             <img
               src="../../../assets/imgs/logo.jpg"
               alt="logo"
               className={classes.logo}
             />
-          </Paper>
+          </Paper> */}
 
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? (
@@ -150,28 +153,12 @@ const DrawerCustom = () => {
           </ListItem>
           <ListItem button>
             <Link className={classes.link} to={AuthRoutes.account}>
-              <ListItemText primary="Whatever" />
-            </Link>
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button>
-            <Link className={classes.link} to={AuthRoutes.dashboard}>
-              <ListItemText primary="Notifications" />
-            </Link>
-          </ListItem>
-          <ListItem button>
-            <Link className={classes.link} to={AuthRoutes.utilities}>
-              <ListItemText primary="Messages" />
-            </Link>
-          </ListItem>
-          <ListItem button>
-            <Link className={classes.link} to={AuthRoutes.account}>
               <ListItemText primary="Account" />
             </Link>
           </ListItem>
         </List>
+        <Divider />
+
         <Divider />
         <Button
           variant="contained"
@@ -193,4 +180,4 @@ const DrawerCustom = () => {
   );
 };
 
-export default DrawerCustom;
+export default AppDrawer;
