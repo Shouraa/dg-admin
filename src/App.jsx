@@ -7,7 +7,7 @@ import { ThemeProvider, CircularProgress } from '@material-ui/core';
 import './App.global.css';
 import dgTheme from './configs/dgThemes';
 // import Admin from './layout/Admin';
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 import { AuthRoutes, NonAuthRoutes } from './routes/paths';
 import Auth from './layout/Auth';
 
@@ -21,16 +21,13 @@ export default function App() {
       <React.Suspense fallback={loading}>
         <Switch>
           <Route exact path={NonAuthRoutes.login} component={Auth} />
-          <Route
-            path={AuthRoutes.admin}
-            render={(props) => <DefaultLayout {...props} />}
-          />
-
-          {/* <PrivateRoute exact path={AuthRoutes.dashboard} component={Admin} />
-        <PrivateRoute exact path={AuthRoutes.utilities} component={Admin} />
-      <PrivateRoute exact path={AuthRoutes.account} component={Admin} /> */}
+          <PrivateRoute path={AuthRoutes.admin} component={DefaultLayout} />
         </Switch>
       </React.Suspense>
     </ThemeProvider>
   );
 }
+
+/* <PrivateRoute exact path={AuthRoutes.dashboard} component={Admin} />
+        <PrivateRoute exact path={AuthRoutes.utilities} component={Admin} />
+      <PrivateRoute exact path={AuthRoutes.account} component={Admin} /> */

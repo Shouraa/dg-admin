@@ -6,7 +6,6 @@ const dgTheme = createTheme({
     primary: {
       main: '#4d4d4d',
     },
-    secondary: red,
   },
 });
 

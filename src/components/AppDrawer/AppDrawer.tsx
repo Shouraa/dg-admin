@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: drawerWidth,
     },
     drawerHeader: {
+      width: '100%',
       display: 'flex',
       alignItems: 'center',
       padding: theme.spacing(0, 1),

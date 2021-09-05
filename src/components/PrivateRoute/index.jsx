@@ -31,14 +31,13 @@ import { Route, Redirect } from 'react-router-dom';
 //   );
 // };
 
-const PrivateRoute = ({ path, exact, component }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
   const token = true;
   return (
     <Route
-      path={path}
-      exact={exact}
+      {...rest}
       render={(props) =>
-        token ? <component {...props} /> : <Redirect to="/" />
+        token ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );
