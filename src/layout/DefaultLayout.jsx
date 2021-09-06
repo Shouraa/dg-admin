@@ -1,15 +1,22 @@
 import React from 'react';
+import useStyles from './styles';
+
 import AppDrawer from '../components/AppDrawer/AppDrawer';
 import AppBarCustom from '../components/Header/AppBarCustom/AppBarCustom';
 import AppContent from '../components/AppContent/AppContent';
 
 const DefaultLayout = () => {
+  const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <AppDrawer />
-      <div>
-        <AppContent />
-      </div>
+      <main className={classes.content}>
+        <AppBarCustom />
+
+        <div className={classes.appLayout}>
+          <AppContent />
+        </div>
+      </main>
     </div>
   );
 };

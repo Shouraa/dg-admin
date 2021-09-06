@@ -10,6 +10,12 @@ const Utilities = React.lazy(() =>
 const Account = React.lazy(() =>
   import('../components/MainComponents/Account')
 );
+const RankCharts = React.lazy(() =>
+  import('../components/MainComponents/RankCharts')
+);
+const Databases = React.lazy(() =>
+  import('../components/MainComponents/Databases')
+);
 
 const routes = [
   {
@@ -33,6 +39,18 @@ const routes = [
     path: `${AuthRoutes.account}`,
     name: 'Account',
     component: Account,
+    exact: true,
+  },
+  {
+    path: `${AuthRoutes.rankCharts}`,
+    name: 'RankCharts',
+    component: RankCharts,
+    exact: true,
+  },
+  {
+    path: `${AuthRoutes.databases}`,
+    name: 'Databases',
+    component: Databases,
     exact: true,
   },
 ];

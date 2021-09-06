@@ -9,7 +9,7 @@ const loading = <CircularProgress />;
 
 const AppContent = () => {
   return (
-    <Container maxWidth="lg">
+    <>
       <Suspense fallback={loading}>
         <Switch>
           {routes.map((route) => {
@@ -32,7 +32,7 @@ const AppContent = () => {
           {/* <Redirect from="/" to="/admin" /> */}
         </Switch>
       </Suspense>
-    </Container>
+    </>
   );
 };
 

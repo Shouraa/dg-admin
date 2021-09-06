@@ -10,21 +10,26 @@ import dgTheme from './configs/dgThemes';
 import PrivateRoute from './components/PrivateRoute';
 import { AuthRoutes, NonAuthRoutes } from './routes/paths';
 import Auth from './layout/Auth';
+import LayoutProvider from './contexts/LayoutContext';
 
 const loading = <CircularProgress />;
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
 
 export default function App() {
   return (
-    <ThemeProvider theme={dgTheme}>
+    <>
       <CssBaseline />
-      <React.Suspense fallback={loading}>
-        <Switch>
-          <Route exact path={NonAuthRoutes.login} component={Auth} />
-          <PrivateRoute path={AuthRoutes.admin} component={DefaultLayout} />
-        </Switch>
-      </React.Suspense>
-    </ThemeProvider>
+      <LayoutProvider>
+        <ThemeProvider theme={dgTheme}>
+          <React.Suspense fallback={loading}>
+            <Switch>
+              <Route exact path={NonAuthRoutes.login} component={Auth} />
+              <PrivateRoute path={AuthRoutes.admin} component={DefaultLayout} />
+            </Switch>
+          </React.Suspense>
+        </ThemeProvider>
+      </LayoutProvider>
+    </>
   );
 }
 
