@@ -8,7 +8,8 @@ import { AppBar, Toolbar, IconButton, Hidden } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import Notifications from '../HeaderSections/Notifications';
-import Profile from '../HeaderSections/Profile';
+// import Profile from '../HeaderSections/Profile';
+import AppBarAvatar from '../HeaderSections/AppBarAvatar/AppBarAvatar';
 import Messages from '../HeaderSections/Messages';
 import { useStyles } from '../HeaderStyles/HeaderStyles';
 
@@ -19,10 +20,10 @@ const AppBarCustom = ({ open, handleDrawerToggle }) => {
     <AppBar
       position="fixed"
       className={clsx(classes.appBar, {
-        [classes.appBarShift]: open,
+        [classes.appBarShift]: true,
       })}
     >
-      <Toolbar className={classes.toolbar}>
+      <Toolbar>
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -33,9 +34,12 @@ const AppBarCustom = ({ open, handleDrawerToggle }) => {
           <MenuIcon />
         </IconButton>
         <Hidden smDown>
-          <Notifications />
-          <Messages />
-          <Profile />
+          <div className={classes.grow} />
+          <div className={classes.appbarSection}>
+            <Notifications />
+            <Messages />
+            <AppBarAvatar />
+          </div>
         </Hidden>
       </Toolbar>
     </AppBar>

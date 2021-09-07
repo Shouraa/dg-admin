@@ -12,17 +12,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   appBarShift: {
     width: () => `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
+    // marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-  },
-
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    flexGrow: 'row wrap',
   },
 
   menuButton: {
@@ -32,27 +26,26 @@ export const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 
-  navlist: {
-    minwidth: '250px',
-    maxwidth: '300px',
+  appbarSection: {
+    display: 'flex',
+    // display: "none",
+    alignItems: 'center',
+    // [theme.breakpoints.up("sm")]: {
+    //   display: "flex"
+    // }
   },
-  navAvatar: {
-    width: '35px',
-    height: '35px',
-  },
+  // navlist: {
+  //   minwidth: '250px',
+  //   maxwidth: '300px',
+  // },
+  // navAvatar: {
+  //   width: '35px',
+  //   height: '35px',
+  // },
 
-  listAvatar: {
-    backgroundColor: 'primary',
-    color: 'white',
-  },
-
-  // appBarShift: {
-  //   width: `calc(100% - ${drawerWidth}px)`,
-  //   marginLeft: drawerWidth,
-  //   transition: theme.transitions.create(['margin', 'width'], {
-  //     easing: theme.transitions.easing.easeOut,
-  //     duration: theme.transitions.duration.enteringScreen,
-  //   }),
+  // listAvatar: {
+  //   backgroundColor: 'primary',
+  //   color: 'white',
   // },
 
   hide: {

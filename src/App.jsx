@@ -10,14 +10,14 @@ import dgTheme from './configs/dgThemes';
 import PrivateRoute from './components/PrivateRoute';
 import { AuthRoutes, NonAuthRoutes } from './routes/paths';
 import Auth from './layout/Auth';
-import LayoutProvider from './contexts/LayoutContext';
+import NavigationProvider from './contexts/NavigationContext';
 
 const loading = <CircularProgress />;
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
 
 export default function App() {
   return (
-    <LayoutProvider>
+    <NavigationProvider>
       <ThemeProvider theme={dgTheme}>
         <React.Suspense fallback={loading}>
           <Switch>
@@ -26,7 +26,7 @@ export default function App() {
           </Switch>
         </React.Suspense>
       </ThemeProvider>
-    </LayoutProvider>
+    </NavigationProvider>
   );
 }
 

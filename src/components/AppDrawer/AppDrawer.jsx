@@ -8,15 +8,7 @@ import {
   Theme,
   createStyles,
 } from '@material-ui/core/styles';
-import {
-  Drawer,
-  List,
-  Divider,
-  IconButton,
-  Button,
-  Typography,
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { Drawer, List, Divider, Button, Typography } from '@material-ui/core';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AssessmentIcon from '@material-ui/icons/Assessment';
@@ -67,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     position: 'relative',
     whiteSpace: 'nowrap',
-    background: theme.palette.glass.main,
+    // background: theme.palette.glass.main,
     backdropFilter: 'blur(8px)',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -99,12 +91,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppDrawer = () => {
+const AppDrawer = ({ open }) => {
   const classes = useStyles();
   const theme = useTheme();
   const history = useHistory();
 
-  const { open, toggleDrawer } = useLayout();
+  // const { open, toggleDrawer } = useLayout();
   const [drawerPermanent, setDrawerPermanent] = useState(true);
   const [expanded, setExpanded] = useState(false);
 
@@ -156,23 +148,8 @@ const AppDrawer = () => {
   console.log('url', url);
 
   return (
-    <Drawer
-      className={{
-        paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-      }}
-      variant="permanent"
-      anchor="left"
-      open={open}
-    >
+    <Drawer variant="permanent" anchor="left" open={open}>
       <div className={classes.drawerToolbar}>
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="menu"
-          onClick={() => toggleDrawer()}
-        >
-          <MenuIcon />
-        </IconButton>
         <Typography variant="h4" className={classes.title}>
           Site Title
         </Typography>

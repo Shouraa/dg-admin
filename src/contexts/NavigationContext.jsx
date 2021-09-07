@@ -13,10 +13,13 @@ const handleDrawerResponsive = () => {
 };
 
 export default function NavigationProvider({ children }) {
-  const [open, setOpen] = useState(() => handleDrawerResponsive());
-  const [value, setValue] = React.useState(0);
+  const [open, setOpen] = useState(() => {
+    handleDrawerResponsive();
+  });
+  const [value, setValue] = useState(0);
 
   const handleDrawerToggle = () => {
+    console.log('kirkirkrir');
     setOpen(!open);
   };
 
