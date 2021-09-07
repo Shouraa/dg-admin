@@ -4,20 +4,15 @@ import React from 'react';
 
 import clsx from 'clsx';
 
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Hidden,
-} from '@material-ui/core/';
+import { AppBar, Toolbar, IconButton, Hidden } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
-import Notification from '../HeaderSections/Notification';
+import Notifications from '../HeaderSections/Notifications';
 import Profile from '../HeaderSections/Profile';
 import Messages from '../HeaderSections/Messages';
 import { useStyles } from '../HeaderStyles/HeaderStyles';
 
-function AppBarCustom({ open, openDrawer }) {
+const AppBarCustom = ({ open, handleDrawerToggle }) => {
   const classes = useStyles();
 
   return (
@@ -25,18 +20,26 @@ function AppBarCustom({ open, openDrawer }) {
       position="fixed"
       className={clsx(classes.appBar, {
         [classes.appBarShift]: open,
-        [classes.appBarShiftClose]: !open,
       })}
     >
       <Toolbar className={classes.toolbar}>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawerToggle}
+          edge="start"
+          className={classes.menuButton}
+        >
+          <MenuIcon />
+        </IconButton>
         <Hidden smDown>
-          <Notification />
+          <Notifications />
           <Messages />
           <Profile />
         </Hidden>
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default AppBarCustom;

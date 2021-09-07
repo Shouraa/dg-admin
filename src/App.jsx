@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+
 import { Switch, Route } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider, CircularProgress } from '@material-ui/core';
 
 import './App.global.css';
@@ -17,19 +17,16 @@ const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
 
 export default function App() {
   return (
-    <>
-      <CssBaseline />
-      <LayoutProvider>
-        <ThemeProvider theme={dgTheme}>
-          <React.Suspense fallback={loading}>
-            <Switch>
-              <Route exact path={NonAuthRoutes.login} component={Auth} />
-              <PrivateRoute path={AuthRoutes.admin} component={DefaultLayout} />
-            </Switch>
-          </React.Suspense>
-        </ThemeProvider>
-      </LayoutProvider>
-    </>
+    <LayoutProvider>
+      <ThemeProvider theme={dgTheme}>
+        <React.Suspense fallback={loading}>
+          <Switch>
+            <Route exact path={NonAuthRoutes.login} component={Auth} />
+            <PrivateRoute path={AuthRoutes.admin} component={DefaultLayout} />
+          </Switch>
+        </React.Suspense>
+      </ThemeProvider>
+    </LayoutProvider>
   );
 }
 

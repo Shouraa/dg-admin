@@ -227,13 +227,3 @@ const AppDrawer = () => {
 };
 
 export default AppDrawer;
-
-{
-  /* <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open,
-        })}
-      >
-        <div className={classes.drawerHeader} />
-      </main> */
-}

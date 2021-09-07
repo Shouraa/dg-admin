@@ -1,25 +1,22 @@
 /* eslint-disable import/prefer-default-export */
 import { makeStyles } from '@material-ui/core';
-import { blue } from '@material-ui/core/colors';
 
 const drawerWidth = 240;
 
 export const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: 'fixed',
-    width: '100%',
-    top: 0,
-    left: 'auto',
-    background: theme.palette.primary,
-    backdropFilter: 'blur(8px)',
-    boxShadow: '1px 1px 8px #9e9e9e',
-    padding: theme.spacing(1, 0),
-    zIndex: theme.zIndex.drawer + 1,
-
-    // transition: theme.transitions.create(['width'], {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen,
-    // }),
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    width: () => `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
 
   toolbar: {
@@ -27,9 +24,14 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     flexGrow: 'row wrap',
   },
-  logo: {
-    color: 'white',
+
+  menuButton: {
+    // marginRight: theme.spacing(2)
   },
+  grow: {
+    flexGrow: 1,
+  },
+
   navlist: {
     minwidth: '250px',
     maxwidth: '300px',
@@ -53,9 +55,6 @@ export const useStyles = makeStyles((theme) => ({
   //   }),
   // },
 
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   hide: {
     display: 'none',
   },
