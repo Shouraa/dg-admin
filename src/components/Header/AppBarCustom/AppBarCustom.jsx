@@ -7,32 +7,75 @@ import clsx from 'clsx';
 import {
   AppBar,
   Toolbar,
-  Typography,
   IconButton,
   Hidden,
+  makeStyles,
+  createStyles,
 } from '@material-ui/core/';
+
+import MenuIcon from '@material-ui/icons/Menu';
 
 import Notification from '../HeaderSections/Notification';
 import Profile from '../HeaderSections/Profile';
 import Messages from '../HeaderSections/Messages';
-import { useStyles } from '../HeaderStyles/HeaderStyles';
 
-function AppBarCustom({ open, openDrawer }) {
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+    },
+    toolBar: {
+      paddingLeft: theme.spacing(0.5),
+    },
+    menuIcon: {
+      marginRight: theme.spacing(2),
+      color: 'white',
+    },
+    sectionDesktop: {
+      display: 'none',
+      [theme.breakpoints.up('md')]: {
+        display: 'flex',
+        alignItems: 'center',
+      },
+    },
+    grow: {
+      flexGrow: 1,
+    },
+  })
+);
+
+function AppBarCustom({ isDrawerOpen, toggleDrawer, onMobileNavOpen }) {
   const classes = useStyles();
 
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       className={clsx(classes.appBar, {
-        [classes.appBarShift]: open,
-        [classes.appBarShiftClose]: !open,
+        [classes.appBarShift]: isDrawerOpen,
+        [classes.appBarShiftClose]: !isDrawerOpen,
       })}
     >
       <Toolbar className={classes.toolbar}>
+        <Hidden mdUp>
+          <IconButton color="inherit" onClick={onMobileNavOpen}>
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
         <Hidden smDown>
-          <Notification />
-          <Messages />
-          <Profile />
+          <IconButton
+            onClick={() => toggleDrawer()}
+            className={classes.menuIcon}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
+        <Hidden smDown>
+          <div className={classes.grow} />
+          <div className={classes.sectionDesktop}>
+            <Notification />
+            <Messages />
+            <Profile />
+          </div>
         </Hidden>
       </Toolbar>
     </AppBar>

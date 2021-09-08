@@ -1,186 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, Link, useRouteMatch } from 'react-router-dom';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import clsx from 'clsx';
-import {
-  makeStyles,
-  useTheme,
-  Theme,
-  createStyles,
-} from '@material-ui/core/styles';
-import {
-  Drawer,
-  List,
-  Divider,
-  IconButton,
-  Button,
-  Typography,
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { makeStyles } from '@material-ui/core/styles';
+import { Drawer, List, Divider, Button, Hidden } from '@material-ui/core';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import LayersIcon from '@material-ui/icons/Layers';
-import { useLayout } from '../../contexts/LayoutContext';
 import { AuthRoutes } from '../../routes/paths';
 
 import GroupLink from './GroupLink';
 import SubLink from './SubLink';
 
-// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  drawerToolbar: {
-    width: '100%',
-    display: 'flex',
-    position: 'relative',
-    boxSizing: 'border-box',
-    textAlign: 'left',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    padding: '8px 10px',
-    textDecoration: 'none',
-
-    ...theme.mixins.toolbar,
-  },
-
-  root: {
-    display: 'flex',
-  },
-
-  menuButton: {
-    marginRight: theme.spacing(2.5),
-  },
-
-  title: {
-    flexGrow: 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-
-  drawerPaper: {
-    position: 'relative',
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
     whiteSpace: 'nowrap',
-    background: theme.palette.glass.main,
-    backdropFilter: 'blur(8px)',
+  },
+  drawerOpen: {
+    backgroundColor: theme.palette.secondary.main,
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  drawerPaperClose: {
-    overflowX: 'hidden',
+  drawerClose: {
+    backgroundColor: theme.palette.secondary.main,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing(7),
+    overflowX: 'hidden',
+    width: theme.spacing(6),
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
+      width: theme.spacing(8),
     },
   },
-
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
+  drawerPaper: {
+    width: drawerWidth,
+    backgroundColor: theme.palette.secondary.main,
   },
-
+  drawerContainer: {
+    height: '100%',
+    marginTop: '64px',
+  },
   logout: {
     margin: '1.5em 2.5em',
   },
 }));
 
-const AppDrawer = () => {
+const AppDrawer = ({ isOpen, onMobileClose, openMobile }) => {
   const classes = useStyles();
-  const theme = useTheme();
   const history = useHistory();
 
-  const { open, toggleDrawer } = useLayout();
-  const [drawerPermanent, setDrawerPermanent] = useState(true);
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  function drawerTypeChange() {
-    const windowWidth = window.innerWidth;
-    const breakpointWidth = theme.breakpoints.values.md;
-    const isSmallScreen = windowWidth < breakpointWidth;
-
-    if (isSmallScreen && drawerPermanent) {
-      setDrawerPermanent(false);
-    } else if (!isSmallScreen && !drawerPermanent) {
-      setDrawerPermanent(true);
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', drawerTypeChange);
-    drawerTypeChange();
-    return () => {
-      window.removeEventListener('resize', drawerTypeChange);
-    };
-  });
-
   const handleLogout = (event) => {
     event.preventDefault();
     history.push('/');
   };
 
-  // eslint-disable-next-line prefer-const
-  let { url } = useRouteMatch();
-
-  // const handleDrawerClose = () => {
-  //   toggleDrawer(false);
-  // };
-  // const handleLogout = (event: SyntheticEvent) => {
-  //   event.preventDefault();
-  //   history.push('/');
-  // };
-
-  // const handleDrawerOpen = () => {
-  //   toggleDrawer(true);
-  // };
-
-  console.log('history', history);
-  console.log('url', url);
-
-  return (
-    <Drawer
-      className={{
-        paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-      }}
-      variant="permanent"
-      anchor="left"
-      open={open}
-    >
-      <div className={classes.drawerToolbar}>
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="menu"
-          onClick={() => toggleDrawer()}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h4" className={classes.title}>
-          Site Title
-        </Typography>
-      </div>
-      <Divider />
-
-      <List>
-        <div>
+  const drawer = (
+    <>
+      <div className={classes.drawerContainer}>
+        <List>
           <SubLink
             link={AuthRoutes.dashboard}
             icon={<DashboardIcon />}
@@ -209,8 +104,8 @@ const AppDrawer = () => {
             icon={<AccountBoxIcon />}
             title="Account"
           />
-        </div>
-      </List>
+        </List>
+      </div>
       <Divider />
 
       <Divider />
@@ -222,18 +117,51 @@ const AppDrawer = () => {
       >
         log out
       </Button>
-    </Drawer>
+    </>
+  );
+
+  return (
+    <>
+      <Hidden smDown>
+        <Drawer
+          className={clsx(classes.drawer, {
+            [classes.drawerOpen]: isOpen,
+            [classes.drawerClose]: !isOpen,
+          })}
+          variant="permanent"
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: isOpen,
+              [classes.drawerClose]: !isOpen,
+            }),
+          }}
+          onClose={onMobileClose}
+          open={openMobile}
+        >
+          {drawer}
+        </Drawer>
+      </Hidden>
+      <Hidden lgUp>
+        <Drawer
+          className={clsx(classes.drawer, {
+            [classes.drawerOpen]: isOpen,
+            [classes.drawerClose]: !isOpen,
+          })}
+          variant="temporary"
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: isOpen,
+              [classes.drawerClose]: !isOpen,
+            }),
+          }}
+          onClose={onMobileClose}
+          open={openMobile}
+        >
+          {drawer}
+        </Drawer>
+      </Hidden>
+    </>
   );
 };
 
 export default AppDrawer;
-
-{
-  /* <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open,
-        })}
-      >
-        <div className={classes.drawerHeader} />
-      </main> */
-}

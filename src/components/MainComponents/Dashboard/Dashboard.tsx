@@ -5,6 +5,30 @@ const Dashboard = () => {
   return (
     <>
       <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Dashboard</Typography>
     </>
   );
 };
