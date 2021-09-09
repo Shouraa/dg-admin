@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   drawerOpen: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary,
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   drawerClose: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary,
   },
   drawerContainer: {
     height: '100%',

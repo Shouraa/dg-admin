@@ -22,7 +22,7 @@ import { AccountCircle, Settings, ExitToApp } from '@material-ui/icons';
 import AvatarBadge from './AvatarBadge';
 import img from '../../../../../assets/icon.png';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   inline: {
     display: 'inline',
   },

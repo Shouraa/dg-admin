@@ -6,27 +6,23 @@ import { ThemeProvider, CircularProgress } from '@material-ui/core';
 
 import './App.global.css';
 import dgTheme from './configs/dgThemes';
-// import Admin from './layout/Admin';
 import PrivateRoute from './components/PrivateRoute';
 import { AuthRoutes, NonAuthRoutes } from './routes/paths';
 import Auth from './layout/Auth';
-import NavigationProvider from './contexts/NavigationContext';
 
 const loading = <CircularProgress />;
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
 
 export default function App() {
   return (
-    <NavigationProvider>
-      <ThemeProvider theme={dgTheme}>
-        <React.Suspense fallback={loading}>
-          <Switch>
-            <Route exact path={NonAuthRoutes.login} component={Auth} />
-            <PrivateRoute path={AuthRoutes.admin} component={DefaultLayout} />
-          </Switch>
-        </React.Suspense>
-      </ThemeProvider>
-    </NavigationProvider>
+    <ThemeProvider theme={dgTheme}>
+      <React.Suspense fallback={loading}>
+        <Switch>
+          <Route exact path={NonAuthRoutes.login} component={Auth} />
+          <PrivateRoute path={AuthRoutes.admin} component={DefaultLayout} />
+        </Switch>
+      </React.Suspense>
+    </ThemeProvider>
   );
 }
 

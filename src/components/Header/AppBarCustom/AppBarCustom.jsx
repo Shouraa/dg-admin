@@ -15,9 +15,9 @@ import {
 
 import MenuIcon from '@material-ui/icons/Menu';
 
-import Notification from '../HeaderSections/Notification';
-import Profile from '../HeaderSections/Profile';
+import Notification from '../HeaderSections/Notifications';
 import Messages from '../HeaderSections/Messages';
+import AppBarAvatar from '../HeaderSections/AppBarAvatar/AppBarAvatar';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -74,7 +74,7 @@ function AppBarCustom({ isDrawerOpen, toggleDrawer, onMobileNavOpen }) {
           <div className={classes.sectionDesktop}>
             <Notification />
             <Messages />
-            <Profile />
+            <AppBarAvatar />
           </div>
         </Hidden>
       </Toolbar>

@@ -15,7 +15,7 @@ import {
 import MessageIcon from '@material-ui/icons/Message';
 import { useStyles } from '../HeaderStyles/HeaderStyles';
 
-const menuItems = [{ label: 'somebody', desc: 'You suck ...' }];
+const menuItems = [{ label: 'somebody', desc: 'whatever ...' }];
 
 const Messages = () => {
   const classes = useStyles();
