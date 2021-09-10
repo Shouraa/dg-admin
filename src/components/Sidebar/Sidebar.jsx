@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,10 +14,49 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import LayersIcon from '@material-ui/icons/Layers';
 import { AuthRoutes } from '../../routes/paths';
 
+import SidebarItem from './SidebarItem';
+
 import GroupLink from './GroupLink';
 import SubLink from './SubLink';
 
 const drawerWidth = 240;
+
+const structure = [
+  {
+    id: 'dashboard',
+    label: 'Dashboard',
+    link: `${AuthRoutes.dashboard}`,
+    icon: <DashboardIcon />,
+  },
+  {
+    id: 'utilities',
+    label: 'Utilities',
+    link: `${AuthRoutes.utilities}`,
+    icon: <AssessmentIcon />,
+    children: [
+      {
+        label: 'Rankcharts',
+        link: `${AuthRoutes.rankCharts}`,
+        icon: <TimelineIcon />,
+      },
+      {
+        label: 'Databases',
+        link: `${AuthRoutes.databases}`,
+        icon: <LayersIcon />,
+      },
+    ],
+  },
+  {
+    id: 'account',
+    label: 'Account',
+    link: `${AuthRoutes.account}`,
+    icon: <AccountBoxIcon />,
+  },
+
+  // { id: 4, type: 'divider' },
+  // { id: 5, type: 'title', label: 'HELP' },
+  // { id: 6, type: 'divider' },
+];
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -53,14 +92,31 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     marginTop: '64px',
   },
+  linkLabel: {
+    padding: 0,
+    color: theme.palette.text.secondary + 'CC',
+    transition: theme.transitions.create(['opacity', 'color']),
+    fontSize: 16,
+  },
+  linkLabelHidden: {
+    opacity: 0,
+  },
   logout: {
     margin: '1.5em 2.5em',
   },
 }));
 
-const AppDrawer = ({ isOpen, onMobileClose, openMobile, openDrawer }) => {
+const Sidebar = ({
+  isOpen,
+  onMobileClose,
+  openMobile,
+  openDrawer,
+  location,
+}) => {
   const classes = useStyles();
   const history = useHistory();
+
+  let { url } = useRouteMatch();
 
   const [expanded, setExpanded] = useState(false);
 
@@ -77,45 +133,27 @@ const AppDrawer = ({ isOpen, onMobileClose, openMobile, openDrawer }) => {
     openDrawer(true);
   };
 
+  console.log(history);
+  console.log('url', url);
+
   const drawer = (
     <>
-      <div className={classes.drawerContainer} onMouseOver={handleMouseOver}>
+      <div className={classes.drawerContainer}>
         {/* <img src={logo} alt="!" className={classes.logo} /> */}
 
-        <List>
-          <SubLink
-            link={AuthRoutes.dashboard}
-            icon={<DashboardIcon />}
-            title="Dashboard"
-          />
-          <GroupLink
-            icon={<AssessmentIcon />}
-            title="Utilities"
-            expanded={expanded}
-            id="utilities"
-            handleChange={(panel) => handleChange(panel)}
-          >
-            <SubLink
-              link={AuthRoutes.rankCharts}
-              icon={<TimelineIcon />}
-              title="Rank Charts"
+        <List className={classes.sidebarList}>
+          {structure.map((link) => (
+            <SidebarItem
+              key={link.id}
+              location={location}
+              isSidebarOpened={isOpen}
+              {...link}
             />
-            <SubLink
-              link={AuthRoutes.databases}
-              icon={<LayersIcon />}
-              title="Databases"
-            />
-          </GroupLink>
-          <SubLink
-            link={AuthRoutes.account}
-            icon={<AccountBoxIcon />}
-            title="Account"
-          />
+          ))}
         </List>
+        <Divider />
       </div>
-      <Divider />
 
-      <Divider />
       <Button
         variant="contained"
         color="primary"
@@ -131,6 +169,7 @@ const AppDrawer = ({ isOpen, onMobileClose, openMobile, openDrawer }) => {
     <>
       <Hidden smDown>
         <Drawer
+          onMouseOver={handleMouseOver}
           className={clsx(classes.drawer, {
             [classes.drawerOpen]: isOpen,
             [classes.drawerClose]: !isOpen,
@@ -171,4 +210,4 @@ const AppDrawer = ({ isOpen, onMobileClose, openMobile, openDrawer }) => {
   );
 };
 
-export default AppDrawer;
+export default Sidebar;

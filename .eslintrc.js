@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['erb', 'prettier'],
+  extends: ['erb', 'prettier', 'react-hooks'],
   rules: {
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 'off',

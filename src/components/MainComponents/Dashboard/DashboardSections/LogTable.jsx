@@ -30,10 +30,10 @@ const fakeData = (time, statusCode, request, path) => {
 
 const rows = [
   fakeData('Thu Sep 09 2021 00:45:46', '202', 'GET', '/user/login'),
-  fakeData('Thu Sep 09 2021 00:45:46', '404', 'GET', '/user/product'),
-  fakeData('Thu Sep 09 2021 00:45:46', '202', 'GET', '/user/login'),
-  fakeData('Thu Sep 09 2021 00:45:46', '202', 'GET', '/user/login'),
-  fakeData('Thu Sep 09 2021 00:45:46', '404', 'GET', '/user/login'),
+  fakeData('Thu Sep 05 2021 00:45:46', '404', 'GET', '/user/product'),
+  fakeData('Thu Sep 02 2021 00:45:46', '202', 'GET', '/user/login'),
+  fakeData('Thu Sep 01 2021 00:45:46', '202', 'GET', '/user/login'),
+  fakeData('Thu Sep 01 2021 00:41:46', '404', 'GET', '/user/login'),
 ];
 
 const LogTable = () => {

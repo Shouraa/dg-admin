@@ -1,6 +1,6 @@
 // import React, { Suspense, lazy } from 'react';
 // import { Switch } from 'react-router-dom';
-// import AppDrawer from '../components/AppDrawer/AppDrawer';
+// import Sidebar from '../components/Sidebar/Sidebar';
 // import PrivateRoute from '../components/PrivateRoute';
 // import { AuthRoutes } from '../routes/index';
 
@@ -17,7 +17,7 @@
 // const Admin: React.FC = () => {
 //   return (
 //     <Suspense fallback="...loading">
-//       <AppDrawer />
+//       <Sidebar />
 //       <Switch>
 //         <PrivateRoute
 //           path={AuthRoutes.dashboard}

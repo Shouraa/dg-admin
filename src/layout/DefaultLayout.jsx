@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
-import AppDrawer from '../components/AppDrawer/AppDrawer';
+import Sidebar from '../components/Sidebar/Sidebar';
 import AppBarCustom from '../components/Header/AppBarCustom/AppBarCustom';
 import AppContent from '../components/AppContent/AppContent';
 
@@ -57,7 +57,7 @@ const DefaultLayout = () => {
         isDrawerOpen={isDrawerOpen}
         onMobileNavOpen={() => setMobileNavOpen(true)}
       />
-      <AppDrawer
+      <Sidebar
         isOpen={isDrawerOpen}
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
