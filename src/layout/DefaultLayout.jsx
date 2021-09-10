@@ -61,6 +61,7 @@ const DefaultLayout = () => {
         isOpen={isDrawerOpen}
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
+        openDrawer={setDrawerOpen}
       />
       <main
         className={clsx(classes.content, {

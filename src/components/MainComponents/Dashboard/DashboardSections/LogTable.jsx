@@ -10,11 +10,19 @@ import TableRow from '@material-ui/core/TableRow';
 import CancelIcon from '@material-ui/icons/Cancel';
 import CheckCircleOutline from '@material-ui/icons/CheckCircleOutline';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
     // minWidth: 650
   },
-});
+
+  cancelIcon: {
+    color: theme.palette.secondary.main,
+  },
+
+  checkIcon: {
+    color: '#44b700',
+  },
+}));
 
 const fakeData = (time, statusCode, request, path) => {
   return { time, statusCode, request, path };
@@ -53,9 +61,9 @@ const LogTable = () => {
             <TableRow key={row.time}>
               <TableCell component="th" scope="row">
                 {row.statusCode === '404' ? (
-                  <CancelIcon />
+                  <CancelIcon className={classes.cancelIcon} />
                 ) : (
-                  <CheckCircleOutline />
+                  <CheckCircleOutline className={classes.checkIcon} />
                 )}
               </TableCell>
               <TableCell component="th" scope="row">

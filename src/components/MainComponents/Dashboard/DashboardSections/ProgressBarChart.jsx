@@ -84,7 +84,11 @@ const ProgressBarChart = () => {
           <Tooltip />
           <Legend />
           <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey="progress" fill="blue" background={{ fill: '#eee' }} />
+          <Bar
+            dataKey="progress"
+            fill="#4d4d4d"
+            background={{ fill: '#eee' }}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>

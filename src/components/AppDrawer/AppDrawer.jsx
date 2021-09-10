@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, List, Divider, Button, Hidden } from '@material-ui/core';
+import { Drawer, List, Divider, Button, Hidden, Box } from '@material-ui/core';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AssessmentIcon from '@material-ui/icons/Assessment';
@@ -39,9 +40,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    width: theme.spacing(6),
+    width: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(8),
+      width: theme.spacing(9),
     },
   },
   drawerPaper: {
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppDrawer = ({ isOpen, onMobileClose, openMobile }) => {
+const AppDrawer = ({ isOpen, onMobileClose, openMobile, openDrawer }) => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -72,9 +73,15 @@ const AppDrawer = ({ isOpen, onMobileClose, openMobile }) => {
     history.push('/');
   };
 
+  const handleMouseOver = () => {
+    openDrawer(true);
+  };
+
   const drawer = (
     <>
-      <div className={classes.drawerContainer}>
+      <div className={classes.drawerContainer} onMouseOver={handleMouseOver}>
+        {/* <img src={logo} alt="!" className={classes.logo} /> */}
+
         <List>
           <SubLink
             link={AuthRoutes.dashboard}

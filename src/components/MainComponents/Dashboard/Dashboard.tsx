@@ -4,6 +4,7 @@ import { Paper, Grid, makeStyles, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import LogTable from './DashboardSections/LogTable';
 import ProgressBarChart from './DashboardSections/ProgressBarChart';
+import DatabasesPieChart from './DashboardSections/DatabasesPieChart';
 
 const useStyles = makeStyles(() => ({
   paperPadding: {
@@ -52,6 +53,14 @@ const Dashboard = () => {
               <ProgressBarChart />
             </Paper>
           </Grid>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Paper className={classes.paperPadding} variant="outlined">
+            <Typography className={classes.titlePaper} variant="h5">
+              Databases
+            </Typography>
+            <DatabasesPieChart />
+          </Paper>
         </Grid>
       </Grid>
     </div>
