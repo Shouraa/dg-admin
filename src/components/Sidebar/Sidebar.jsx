@@ -16,9 +16,6 @@ import { AuthRoutes } from '../../routes/paths';
 
 import SidebarItem from './SidebarItem';
 
-import GroupLink from './GroupLink';
-import SubLink from './SubLink';
-
 const drawerWidth = 240;
 
 const structure = [
