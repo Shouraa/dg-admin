@@ -7,11 +7,14 @@ import ProgressBarChart from './DashboardSections/ProgressBarChart';
 import DatabasesPieChart from './DashboardSections/DatabasesPieChart';
 
 const useStyles = makeStyles(() => ({
+  container: {
+    padding: '16px 32px',
+  },
   paperPadding: {
     padding: '10px 5px 5px 10px',
   },
   mt: {
-    marginTop: 13,
+    marginTop: 16,
   },
   titlePaper: {
     marginBottom: '16px',
@@ -25,7 +28,7 @@ const useStyles = makeStyles(() => ({
 const Dashboard = () => {
   const classes = useStyles();
   return (
-    <div className={classes.paperPadding}>
+    <div className={classes.container}>
       <h1>Dashboard</h1>
 
       <Grid container spacing={2}>
@@ -55,7 +58,10 @@ const Dashboard = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper className={classes.paperPadding} variant="outlined">
+          <Paper
+            className={clsx(classes.paperPadding, classes.mt)}
+            variant="outlined"
+          >
             <Typography className={classes.titlePaper} variant="h5">
               Databases
             </Typography>

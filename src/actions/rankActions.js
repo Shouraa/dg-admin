@@ -6,7 +6,7 @@ export const initializePedalData = () => {
   return async (dispatch) => {
     const pedals = await jsonData.data;
     dispatch({
-      type: INIT_BLOGS,
+      type: INIT_PEDAL_DATA,
       payload: pedals,
     });
   };
