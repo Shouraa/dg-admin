@@ -268,7 +268,7 @@ export default merge(baseConfig, {
     },
     historyApiFallback: {
       verbose: true,
-      disableDotRule: false,
+      disableDotRule: true,
     },
     before() {
       console.log('Starting Main Process...');
