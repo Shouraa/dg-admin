@@ -66,7 +66,7 @@ const AppBarAvatar = (props) => {
       >
         <ListItemAvatar>
           <AvatarBadge
-            overlap="circle"
+            overlap="circular"
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'right',

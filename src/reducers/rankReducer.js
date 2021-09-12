@@ -1,4 +1,4 @@
-import { INIT_PEDAL_DATA } from '../actions/rank';
+import { INIT_PEDAL_DATA } from '../actions/rankActions';
 
 const initialState = {
   pedals: [],
@@ -16,3 +16,5 @@ const rankReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default rankReducer;
