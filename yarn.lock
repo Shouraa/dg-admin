@@ -4816,11 +4816,6 @@
     "lazy-val" "^1.0.4"
     "mime" "^2.5.0"
 
-"electron-react-devtools@^0.5.3":
-  "integrity" "sha1-x07bEkXcHP4TgLkwFs1OtYjtALc="
-  "resolved" "https://registry.npmjs.org/electron-react-devtools/-/electron-react-devtools-0.5.3.tgz"
-  "version" "0.5.3"
-
 "electron-rebuild@^2.3.2":
   "integrity" "sha512-VLd3iIn65PmYWmvL+nx0oKspbohkDUhCAz8I2EWbMJcOFzWKW1UXJZ+ZG53iEDJFldm9PahE4q2Bx3ns4bdzeQ=="
   "resolved" "https://registry.npmjs.org/electron-rebuild/-/electron-rebuild-2.3.2.tgz"
