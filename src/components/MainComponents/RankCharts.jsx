@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Typography, Paper, Grid } from '@material-ui/core';
+import { Typography, Box, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import clsx from 'clsx';
@@ -11,11 +11,12 @@ const useStyles = makeStyles((theme) => ({
     padding: '16px 32px',
     flexGrow: 1,
   },
-  paper: {
+  box: {
     marginTop: theme.spacing(2),
     padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    backgroundColor: 'gray',
   },
 }));
 
@@ -32,12 +33,12 @@ const RankCharts = () => {
   return (
     <div className={classes.container}>
       <Typography variant="h3">RankCharts</Typography>
-      <Grid containter spacing={2}>
+      <Grid container spacing={3}>
         <Grid item xs={8}>
-          <Paper className={classes.paper}>KIREKHAR</Paper>
+          <Box className={classes.box}>CHARTS</Box>
         </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>KIREKHAR</Paper>
+        <Grid item xs={4}>
+          <Box className={classes.box}>Item</Box>
         </Grid>
       </Grid>
     </div>
