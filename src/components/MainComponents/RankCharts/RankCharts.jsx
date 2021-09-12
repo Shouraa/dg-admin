@@ -4,7 +4,8 @@ import { Typography, Box, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import clsx from 'clsx';
-import { initializePedalData } from '../../actions/rankActions';
+import { initializePedalData } from '../../../actions/rankActions';
+import TypeSelect from './RankChartsSections/TypeSelect';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -16,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    backgroundColor: 'gray',
   },
 }));
 
@@ -33,12 +33,14 @@ const RankCharts = () => {
   return (
     <div className={classes.container}>
       <Typography variant="h3">RankCharts</Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         <Grid item xs={8}>
           <Box className={classes.box}>CHARTS</Box>
         </Grid>
         <Grid item xs={4}>
-          <Box className={classes.box}>Item</Box>
+          <Box className={classes.box}>
+            <TypeSelect />
+          </Box>
         </Grid>
       </Grid>
     </div>

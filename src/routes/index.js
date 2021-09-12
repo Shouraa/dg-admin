@@ -11,7 +11,7 @@ const Account = React.lazy(() =>
   import('../components/MainComponents/Account')
 );
 const RankCharts = React.lazy(() =>
-  import('../components/MainComponents/RankCharts')
+  import('../components/MainComponents/RankCharts/RankCharts')
 );
 const Databases = React.lazy(() =>
   import('../components/MainComponents/Databases')
