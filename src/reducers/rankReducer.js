@@ -1,7 +1,7 @@
 import { INIT_PEDAL_DATA } from '../actions/rankActions';
 
 const initialState = {
-  pedals: [],
+  products: [],
 };
 
 const rankReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const rankReducer = (state = initialState, action) => {
     case INIT_PEDAL_DATA:
       return {
         ...state,
-        pedals: action.payload,
+        products: action.payload,
       };
 
     default:

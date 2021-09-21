@@ -123,7 +123,7 @@
         { "rank": "4809", "time": 1623826801270 }
       ],
       "_id": "602f7002c4901b18792a7f74",
-      "name": "Darkglass Adam",
+      "name": "Adam",
       "code": "ADAM",
       "__v": 0,
       "type": "PEDAL"
@@ -229,7 +229,7 @@
         { "rank": "7433", "time": 1623826804186 }
       ],
       "_id": "604a1ea38096c7748b9eb001",
-      "name": "Darkglass Alpha·Omega 900 Bass Head",
+      "name": "Alpha·Omega 900 Bass Head",
       "code": "AO900",
       "__v": 0,
       "type": "HEAD"
@@ -335,7 +335,7 @@
         { "rank": "15453", "time": 1623826805772 }
       ],
       "_id": "604a1ea58096c7748b9eb002",
-      "name": "Darkglass Microtubes 900v2 Bass Head",
+      "name": "Microtubes 900v2 Bass Head",
       "code": "M900v2",
       "__v": 0,
       "type": "HEAD"
@@ -441,7 +441,7 @@
         { "rank": "5411", "time": 1623826807063 }
       ],
       "_id": "604a1ea68096c7748b9eb003",
-      "name": "Darkglass Microtubes 500 V2 Bass Head",
+      "name": "Microtubes 500 V2 Bass Head",
       "code": "M500v2",
       "__v": 0,
       "type": "HEAD"
@@ -547,7 +547,7 @@
         { "rank": "3754", "time": 1623826808536 }
       ],
       "_id": "604a1ea88096c7748b9eb004",
-      "name": "Darkglass Alpha·Omega 500 Bass Head",
+      "name": "Alpha·Omega 500 Bass Head",
       "code": "AO500",
       "__v": 0,
       "type": "HEAD"
@@ -653,7 +653,7 @@
         { "rank": "9387", "time": 1623826810124 }
       ],
       "_id": "604a1ea98096c7748b9eb005",
-      "name": "Darkglass Microtubes X Ultra",
+      "name": "Microtubes X Ultra",
       "code": "XUL",
       "__v": 0,
       "type": "PEDAL"
@@ -759,7 +759,7 @@
         { "rank": "8093", "time": 1623826811505 }
       ],
       "_id": "604a1eab8096c7748b9eb006",
-      "name": "Darkglass Microtubes X7",
+      "name": "Microtubes X7",
       "code": "X7",
       "__v": 0,
       "type": "PEDAL"
@@ -865,7 +865,7 @@
         { "rank": "8683", "time": 1623826812967 }
       ],
       "_id": "604a1eac8096c7748b9eb007",
-      "name": "Darkglass Microtubes B7K Ultra v2 Aux",
+      "name": "Microtubes B7K Ultra v2 Aux",
       "code": "B7Uv2",
       "__v": 0,
       "type": "PEDAL"
@@ -971,7 +971,7 @@
         { "rank": "28468", "time": 1623826814472 }
       ],
       "_id": "604a1ead8096c7748b9eb008",
-      "name": "Darkglass Microtubes B7K v2 Bass Overdr.",
+      "name": "Microtubes B7K v2 Bass Overdr.",
       "code": "B7K",
       "__v": 0,
       "type": "PEDAL"
@@ -1077,7 +1077,7 @@
         { "rank": "7424", "time": 1623826815935 }
       ],
       "_id": "604a1eaf8096c7748b9eb009",
-      "name": "Darkglass Alpha Omega Ultra V2",
+      "name": "Alpha Omega Ultra V2",
       "code": "AOUv2",
       "__v": 0,
       "type": "PEDAL"
@@ -1183,7 +1183,7 @@
         { "rank": "4704", "time": 1623826817400 }
       ],
       "_id": "604a1eb08096c7748b9eb00a",
-      "name": "Darkglass Alpha-Omega",
+      "name": "Alpha-Omega",
       "code": "AO",
       "__v": 0,
       "type": "PEDAL"
@@ -1289,7 +1289,7 @@
         { "rank": "9324", "time": 1623826819030 }
       ],
       "_id": "604a1eb28096c7748b9eb00b",
-      "name": "Darkglass Hyper Luminal Compressor",
+      "name": "Hyper Luminal Compressor",
       "code": "HYL",
       "__v": 0,
       "type": "PEDAL"
@@ -1395,7 +1395,7 @@
         { "rank": "28737", "time": 1623826820495 }
       ],
       "_id": "604a1eb38096c7748b9eb00c",
-      "name": "Darkglass Harmonic Booster 2.0 Bass Pre",
+      "name": "Harmonic Booster 2.0 Bass Pre",
       "code": "HBO",
       "__v": 0,
       "type": "PEDAL"
@@ -1501,7 +1501,7 @@
         { "rank": "10676", "time": 1623826822013 }
       ],
       "_id": "604a1eb58096c7748b9eb00d",
-      "name": "Darkglass DG212N Bass Cab",
+      "name": "DG212N Bass Cab",
       "code": "212N",
       "__v": 0,
       "type": "CAB"
@@ -1607,7 +1607,7 @@
         { "rank": "11328", "time": 1623826823382 }
       ],
       "_id": "604a1eb68096c7748b9eb00e",
-      "name": "Darkglass DG112N Bass Cab",
+      "name": "DG112N Bass Cab",
       "code": "112N",
       "__v": 0,
       "type": "CAB"
@@ -1702,7 +1702,7 @@
         { "rank": "42475", "time": 1623826824731 }
       ],
       "_id": "604a1eb88096c7748b9eb00f",
-      "name": "Darkglass DG210N Bass Cab",
+      "name": "DG210N Bass Cab",
       "code": "210N",
       "__v": 0,
       "type": "CAB"
@@ -1800,7 +1800,7 @@
         { "rank": "36247", "time": 1623826826071 }
       ],
       "_id": "604a1eb98096c7748b9eb010",
-      "name": "Darkglass DG410N Bass Cab",
+      "name": "DG410N Bass Cab",
       "code": "410N",
       "__v": 0,
       "type": "CAB"
@@ -1925,7 +1925,7 @@
         { "rank": "8655", "time": 1623740402640 }
       ],
       "_id": "602e6fd600c593b93d4de2d6",
-      "name": "Darkglass Element Cabsim/Headph. Amp",
+      "name": "Element Cabsim/Headph. Amp",
       "code": "ELEM",
       "__v": 0,
       "type": "PEDAL"

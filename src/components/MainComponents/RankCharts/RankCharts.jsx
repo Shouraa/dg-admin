@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    backgroundColor: '#E6EED6',
+    borderRadius: 5,
   },
 }));
 
@@ -24,22 +26,22 @@ const RankCharts = () => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
-  const pedalRanks = useSelector((state) => state.ranks);
-  console.log(pedalRanks);
+  const productRanks = useSelector((state) => state.ranks);
+  // console.log(productRanks);
   useEffect(() => {
     dispatch(initializePedalData());
   }, [dispatch]);
 
   return (
     <div className={classes.container}>
-      <Typography variant="h3">RankCharts</Typography>
+      <h1>RankCharts</h1>
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <Box className={classes.box}>CHARTS</Box>
         </Grid>
         <Grid item xs={4}>
           <Box className={classes.box}>
-            <TypeSelect />
+            <TypeSelect data={productRanks} />
           </Box>
         </Grid>
       </Grid>

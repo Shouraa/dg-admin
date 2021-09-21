@@ -138,16 +138,6 @@ app.on('window-all-closed', () => {
 app
   .whenReady()
   .then(createWindow)
-  // .then(() => {
-  //   installExtension(REDUX_DEVTOOLS)
-  //     .then((name) => console.log(`Added Extension:  ${name}`))
-  //     .catch((err) => console.log('An error occurred: ', err));
-  // })
-  // .then(() => {
-  //   installExtension(REACT_DEVELOPER_TOOLS)
-  //     .then((name) => console.log(`Added Extension:  ${name}`))
-  //     .catch((err) => console.log('An error occurred: ', err));
-  // })
 
   .catch(console.log);
 
@@ -156,3 +146,14 @@ app.on('activate', () => {
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow();
 });
+
+// .then(() => {
+//   installExtension(REDUX_DEVTOOLS)
+//     .then((name) => console.log(`Added Extension:  ${name}`))
+//     .catch((err) => console.log('An error occurred: ', err));
+// })
+// .then(() => {
+//   installExtension(REACT_DEVELOPER_TOOLS)
+//     .then((name) => console.log(`Added Extension:  ${name}`))
+//     .catch((err) => console.log('An error occurred: ', err));
+// })
