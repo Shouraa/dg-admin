@@ -20,18 +20,6 @@ const MenuProps = {
   },
 };
 
-// const names = [
-//   'Microtubes X Ultra',
-//   'Alpha Omega Ultra v2 ',
-//   'Microtubes B7K Ultra v2',
-//   'Vintage Ultra v2 ',
-//   'Microtubes X7',
-//   'Alpha Omega',
-//   'Microtubes B7K v2',
-//   'Vintage Deluxe v3',
-//   'Microtubes X',
-// ];
-
 function getStyles(name, productName, theme) {
   return {
     fontWeight:
@@ -62,15 +50,16 @@ const TypeSelect = ({ data }) => {
   let filteredData = [];
 
   if (category === 'Pedal') {
-    filteredData = data.products.filter((entry) => entry.type === 'PEDAL');
+    filteredData = data.products.filter((p) => p.type === 'PEDAL');
   } else if (category === 'Amplifier') {
-    filteredData = data.products.filter((entry) => entry.type === 'HEAD');
+    filteredData = data.products.filter((p) => p.type === 'HEAD');
   } else {
-    filteredData = data.products.filter((entry) => entry.type === 'CAB');
+    filteredData = data.products.filter((p) => p.type === 'CAB');
   }
 
   const handleChangeCategory = (event) => {
     setCategory(event.target.value);
+    setProductName([]);
   };
 
   const handleChangeProduct = (event) => {
@@ -85,8 +74,7 @@ const TypeSelect = ({ data }) => {
       target: { innerText },
     } = event;
 
-    productName.filter((name) => name !== innerText);
-    console.log('You clicked the Chip.', innerText);
+    setProductName(productName.filter((name) => name !== innerText));
   };
 
   console.log(filteredData);
