@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,6 +9,13 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Box from '@material-ui/core/Box';
+
+import {
+  changeCategory,
+  selectProducts,
+  deleteChip,
+  chartData,
+} from '../../../../actions/rankActions';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -20,10 +28,10 @@ const MenuProps = {
   },
 };
 
-function getStyles(name, productName, theme) {
+function getStyles(name, selectedProducts, theme) {
   return {
     fontWeight:
-      productName.indexOf(name) === -1
+      selectedProducts.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
@@ -40,33 +48,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// .............................................................................................................
+
 const TypeSelect = ({ data }) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const [productName, setProductName] = useState([]);
-  const [category, setCategory] = useState('');
+  const dispatch = useDispatch();
+  const ranks = useSelector((state) => state.ranks);
+  console.log('ranks', ranks);
 
   let filteredData = [];
 
-  if (category === 'Pedal') {
+  if (ranks.category === 'Pedal') {
     filteredData = data.products.filter((p) => p.type === 'PEDAL');
-  } else if (category === 'Amplifier') {
+  } else if (ranks.category === 'Amplifier') {
     filteredData = data.products.filter((p) => p.type === 'HEAD');
   } else {
     filteredData = data.products.filter((p) => p.type === 'CAB');
   }
 
   const handleChangeCategory = (event) => {
-    setCategory(event.target.value);
-    setProductName([]);
+    const category = event.target.value;
+    dispatch(changeCategory(category));
+    dispatch(selectProducts([]));
   };
 
   const handleChangeProduct = (event) => {
     const {
       target: { value },
     } = event;
-    setProductName(typeof value === 'string' ? value.split(',') : value);
+    console.log(value);
+    dispatch(chartData(ranks.products.filter((p) => p.name === value)));
+    dispatch(
+      selectProducts(typeof value === 'string' ? value.split(',') : value)
+    );
   };
 
   const handleDeleteChip = (event) => {
@@ -74,10 +90,11 @@ const TypeSelect = ({ data }) => {
       target: { innerText },
     } = event;
 
-    setProductName(productName.filter((name) => name !== innerText));
+    dispatch(deleteChip(innerText));
   };
 
-  console.log(filteredData);
+  console.log('selected', ranks.selected);
+  console.log('Filtered', filteredData);
 
   return (
     <>
@@ -88,7 +105,7 @@ const TypeSelect = ({ data }) => {
         >
           <FormHelperText>Filter by</FormHelperText>
           <Select
-            value={category}
+            value={ranks.category}
             onChange={handleChangeCategory}
             displayEmpty
             inputProps={{ 'aria-label': 'Select a category' }}
@@ -109,7 +126,7 @@ const TypeSelect = ({ data }) => {
             labelId="select-product"
             id="select-product"
             multiple
-            value={productName}
+            value={ranks.selected}
             onChange={handleChangeProduct}
             overflow="hidden"
             MenuProps={MenuProps}
@@ -118,7 +135,7 @@ const TypeSelect = ({ data }) => {
               <MenuItem
                 key={name}
                 value={name}
-                style={getStyles(name, productName, theme)}
+                style={getStyles(name, ranks.selected, theme)}
               >
                 {name}
               </MenuItem>
@@ -126,7 +143,7 @@ const TypeSelect = ({ data }) => {
           </Select>
         </FormControl>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-          {productName.map((value) => (
+          {ranks.selected.map((value) => (
             <Chip key={value} label={value} onClick={handleDeleteChip} />
           ))}
         </Box>

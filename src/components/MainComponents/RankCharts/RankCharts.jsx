@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { initializePedalData } from '../../../actions/rankActions';
 import TypeSelect from './RankChartsSections/TypeSelect';
+import RanksLineChart from './RankChartsSections/RanksLineChart';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -27,19 +28,22 @@ const RankCharts = () => {
 
   const dispatch = useDispatch();
   const productRanks = useSelector((state) => state.ranks);
-  // console.log(productRanks);
   useEffect(() => {
     dispatch(initializePedalData());
   }, [dispatch]);
 
+  console.log(productRanks);
+
   return (
     <div className={classes.container}>
       <h1>RankCharts</h1>
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
-          <Box className={classes.box}>CHARTS</Box>
+      <Grid container spacing={1}>
+        <Grid item xs={9}>
+          <Box className={classes.box}>
+            <RanksLineChart />
+          </Box>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <Box className={classes.box}>
             <TypeSelect data={productRanks} />
           </Box>

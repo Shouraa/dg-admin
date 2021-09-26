@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-const fakeData = [
+const mockData = [
   {
     name: 'JAN',
     progress: 40,
@@ -66,7 +66,7 @@ const ProgressBarChart = () => {
     <div style={{ width: '99%', height: 300 }}>
       <ResponsiveContainer>
         <BarChart
-          data={fakeData}
+          data={mockData}
           margin={{
             top: 10,
             right: 30,
