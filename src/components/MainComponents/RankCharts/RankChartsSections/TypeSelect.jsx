@@ -55,17 +55,17 @@ const TypeSelect = ({ data }) => {
   const theme = useTheme();
 
   const dispatch = useDispatch();
-  const ranks = useSelector((state) => state.ranks);
-  console.log('ranks', ranks);
 
   let filteredData = [];
 
-  if (ranks.category === 'Pedal') {
+  if (data.category === 'Pedal') {
     filteredData = data.products.filter((p) => p.type === 'PEDAL');
-  } else if (ranks.category === 'Amplifier') {
+  } else if (data.category === 'Amplifier') {
     filteredData = data.products.filter((p) => p.type === 'HEAD');
-  } else {
+  } else if (data.category === 'Head') {
     filteredData = data.products.filter((p) => p.type === 'CAB');
+  } else {
+    filteredData = [];
   }
 
   const handleChangeCategory = (event) => {
@@ -79,7 +79,7 @@ const TypeSelect = ({ data }) => {
       target: { value },
     } = event;
     console.log(value);
-    dispatch(chartData(ranks.products.filter((p) => p.name === value)));
+    dispatch(chartData(data.products.filter((p) => p.name === value)));
     dispatch(
       selectProducts(typeof value === 'string' ? value.split(',') : value)
     );
@@ -93,7 +93,7 @@ const TypeSelect = ({ data }) => {
     dispatch(deleteChip(innerText));
   };
 
-  console.log('selected', ranks.selected);
+  console.log('selected', data.selected);
   console.log('Filtered', filteredData);
 
   return (
@@ -105,7 +105,7 @@ const TypeSelect = ({ data }) => {
         >
           <FormHelperText>Filter by</FormHelperText>
           <Select
-            value={ranks.category}
+            value={data.category}
             onChange={handleChangeCategory}
             displayEmpty
             inputProps={{ 'aria-label': 'Select a category' }}
@@ -126,7 +126,7 @@ const TypeSelect = ({ data }) => {
             labelId="select-product"
             id="select-product"
             multiple
-            value={ranks.selected}
+            value={data.selected}
             onChange={handleChangeProduct}
             overflow="hidden"
             MenuProps={MenuProps}
@@ -143,7 +143,7 @@ const TypeSelect = ({ data }) => {
           </Select>
         </FormControl>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-          {ranks.selected.map((value) => (
+          {data.selected.map((value) => (
             <Chip key={value} label={value} onClick={handleDeleteChip} />
           ))}
         </Box>
