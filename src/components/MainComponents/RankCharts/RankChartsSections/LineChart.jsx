@@ -1,5 +1,7 @@
-import React, { PureComponent } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+/* eslint-disable import/newline-after-import */
+/* eslint-disable react/prop-types */
+import React from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
 
 import {
   LineChart,
@@ -11,19 +13,18 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import DatabasesPieChart from '../../Dashboard/DashboardSections/DatabasesPieChart';
-
-const jsonData = require('../../../../actions/data/pedals.json');
 
 const dayjs = require('dayjs');
 dayjs().format();
 
-const RanksLineChart = () => {
-  const dispatch = useDispatch();
-  const productRanks = useSelector((state) => state.ranks);
+const jsonData = require('../../../../actions/data/pedals.json');
+
+const RanksLineChart = ({ data }) => {
+  // const dispatch = useDispatch();
+  // const productRanks = useSelector((state) => state.ranks);
 
   // const data = productRanks.products[0];
-  console.log('data', jsonData.data[0].rank);
+  console.log('datassssssssssssssssss', data);
 
   return (
     <>

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -78,8 +80,10 @@ const TypeSelect = ({ data }) => {
       target: { value },
     } = event;
 
-    const productNames = typeof value === 'string' ? value.split(',') : value
-    dispatch(chartData(data.products.filter((p) => productNames.includes(p.name))));
+    const productNames = typeof value === 'string' ? value.split(',') : value;
+    dispatch(
+      chartData(data.products.filter((p) => productNames.includes(p.name)))
+    );
     dispatch(selectProducts(productNames));
   };
 
