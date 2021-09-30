@@ -1,5 +1,5 @@
 import { INIT_PEDAL_DATA } from '../actions/rankActions';
-import { CHANGE_CATEGORY } from '../actions/rankActions';
+// import { CHANGE_CATEGORY } from '../actions/rankActions';
 import { SELECT_PRODUCTS } from '../actions/rankActions';
 import { DELETE_CHIP } from '../actions/rankActions';
 import { CHART_DATA } from '../actions/rankActions';
@@ -18,11 +18,11 @@ const rankReducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
       };
-    case CHANGE_CATEGORY:
-      return {
-        ...state,
-        category: action.payload,
-      };
+    // case CHANGE_CATEGORY:
+    //   return {
+    //     ...state,
+    //     category: action.payload,
+    //   };
     case SELECT_PRODUCTS:
       return {
         ...state,

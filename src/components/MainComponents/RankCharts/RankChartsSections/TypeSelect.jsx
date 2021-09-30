@@ -11,7 +11,6 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Box from '@material-ui/core/Box';
 
 import {
-  changeCategory,
   selectProducts,
   deleteChip,
   chartData,
@@ -51,6 +50,8 @@ const useStyles = makeStyles((theme) => ({
 // .............................................................................................................
 
 const TypeSelect = ({ data }) => {
+  const [category, setCategory] = useState('');
+
   const classes = useStyles();
   const theme = useTheme();
 
@@ -58,19 +59,17 @@ const TypeSelect = ({ data }) => {
 
   let filteredData = [];
 
-  if (data.category === 'Pedal') {
+  if (category === 'Pedal') {
     filteredData = data.products.filter((p) => p.type === 'PEDAL');
-  } else if (data.category === 'Amplifier') {
+  } else if (category === 'Amplifier') {
     filteredData = data.products.filter((p) => p.type === 'HEAD');
-  } else if (data.category === 'Head') {
+  } else if (category === 'Cabinet') {
     filteredData = data.products.filter((p) => p.type === 'CAB');
-  } else {
-    filteredData = [];
   }
 
   const handleChangeCategory = (event) => {
     const category = event.target.value;
-    dispatch(changeCategory(category));
+    setCategory(category);
     dispatch(selectProducts([]));
   };
 
@@ -105,7 +104,7 @@ const TypeSelect = ({ data }) => {
         >
           <FormHelperText>Filter by</FormHelperText>
           <Select
-            value={data.category}
+            value={category}
             onChange={handleChangeCategory}
             displayEmpty
             inputProps={{ 'aria-label': 'Select a category' }}
@@ -135,7 +134,7 @@ const TypeSelect = ({ data }) => {
               <MenuItem
                 key={name}
                 value={name}
-                style={getStyles(name, ranks.selected, theme)}
+                style={getStyles(name, data.selected, theme)}
               >
                 {name}
               </MenuItem>
@@ -144,7 +143,12 @@ const TypeSelect = ({ data }) => {
         </FormControl>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
           {data.selected.map((value) => (
-            <Chip key={value} label={value} onClick={handleDeleteChip} />
+            <Chip
+              variant="outlined"
+              key={value}
+              label={value}
+              onClick={handleDeleteChip}
+            />
           ))}
         </Box>
       </div>
