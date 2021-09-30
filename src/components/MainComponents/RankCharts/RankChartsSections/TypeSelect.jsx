@@ -77,11 +77,10 @@ const TypeSelect = ({ data }) => {
     const {
       target: { value },
     } = event;
-    console.log(value);
-    dispatch(chartData(data.products.filter((p) => p.name === value)));
-    dispatch(
-      selectProducts(typeof value === 'string' ? value.split(',') : value)
-    );
+
+    const productNames = typeof value === 'string' ? value.split(',') : value
+    dispatch(chartData(data.products.filter((p) => productNames.includes(p.name))));
+    dispatch(selectProducts(productNames));
   };
 
   const handleDeleteChip = (event) => {
