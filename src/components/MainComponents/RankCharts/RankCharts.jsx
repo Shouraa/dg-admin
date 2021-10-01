@@ -38,7 +38,7 @@ const RankCharts = () => {
       <Grid container spacing={1}>
         <Grid item xs={9}>
           <Box className={classes.box}>
-            <RanksLineChart data={productRanks.SelectChartData} />
+            <RanksLineChart data={productRanks.selectChartData} />
           </Box>
         </Grid>
         <Grid item xs={3}>

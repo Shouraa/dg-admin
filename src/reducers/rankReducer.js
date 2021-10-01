@@ -1,14 +1,12 @@
 import {
   INIT_PEDAL_DATA,
-  SELECT_PRODUCTS,
   DELETE_CHIP,
   SELECT_CHART_DATA,
 } from '../actions/rankActions';
 
 const initialState = {
   products: [],
-  selected: [],
-  SelectChartData: [],
+  selectChartData: [],
 };
 
 const rankReducer = (state = initialState, action) => {
@@ -19,20 +17,17 @@ const rankReducer = (state = initialState, action) => {
         products: action.payload,
       };
 
-    case SELECT_PRODUCTS:
+    case DELETE_CHIP:
       return {
         ...state,
-        selected: action.payload,
+        selectChartData: state.selectChartData.filter(
+          (p) => p.name !== action.payload
+        ),
       };
-    // case DELETE_CHIP:
-    //   return {
-    //     ...state,
-    //     selected: state.selected.filter((name) => name !== action.payload),
-    //   };
     case SELECT_CHART_DATA:
       return {
         ...state,
-        SelectChartData: action.payload,
+        selectChartData: action.payload,
       };
 
     default:

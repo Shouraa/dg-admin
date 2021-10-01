@@ -1,6 +1,6 @@
 /* eslint-disable import/newline-after-import */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -22,11 +22,11 @@ dayjs().format();
 const RanksLineChart = ({ data }) => {
   // const [color, setColor] = useState('#ffffff');
 
-  const colorRandomizer = () => {
-    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  // const colorRandomizer = () => {
+  //   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
-    // setColor(randomColor);
-  };
+  //   // setColor(randomColor);
+  // };
   return (
     <>
       <ResponsiveContainer width="99%" aspect={2}>

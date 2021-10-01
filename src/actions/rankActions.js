@@ -1,5 +1,4 @@
 export const INIT_PEDAL_DATA = 'INIT_PEDAL_DATA';
-export const SELECT_PRODUCTS = 'SELECT_PRODUCTS';
 export const DELETE_CHIP = 'DELETE_CHIP';
 export const SELECT_CHART_DATA = 'SELECT_CHART_DATA';
 
@@ -15,25 +14,16 @@ export const initializePedalData = () => {
   };
 };
 
-export const selectProducts = (array) => {
+export const deleteChip = (chip) => {
   return async (dispatch) => {
     dispatch({
-      type: SELECT_PRODUCTS,
-      payload: array,
+      type: DELETE_CHIP,
+      payload: chip,
     });
   };
 };
 
-// export const deleteChip = (chip) => {
-//   return async (dispatch) => {
-//     dispatch({
-//       type: DELETE_CHIP,
-//       payload: chip,
-//     });
-//   };
-// };
-
-export const SelectChartData = (array) => {
+export const selectChartData = (array) => {
   return async (dispatch) => {
     dispatch({
       type: SELECT_CHART_DATA,

@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,9 +11,9 @@ import Chip from '@material-ui/core/Chip';
 import Box from '@material-ui/core/Box';
 
 import {
-  selectProducts,
+  // selectProducts,
   deleteChip,
-  SelectChartData,
+  selectChartData,
 } from '../../../../actions/rankActions';
 
 const ITEM_HEIGHT = 48;
@@ -28,10 +27,10 @@ const MenuProps = {
   },
 };
 
-function getStyles(name, selectedProducts, theme) {
+function getStyles(name, products, theme) {
   return {
     fontWeight:
-      selectedProducts.indexOf(name) === -1
+      products.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
@@ -82,7 +81,7 @@ const TypeSelect = ({ data }) => {
 
     const productNames = typeof value === 'string' ? value.split(',') : value;
     dispatch(
-      SelectChartData(
+      selectChartData(
         data.products.filter((p) => productNames.includes(p.name))
       )
     );
@@ -94,7 +93,7 @@ const TypeSelect = ({ data }) => {
       target: { innerText },
     } = event;
 
-    // dispatch(deleteChip(innerText));
+    dispatch(deleteChip(innerText));
     setProducts(products.filter((name) => name !== innerText));
   };
 
@@ -137,7 +136,7 @@ const TypeSelect = ({ data }) => {
               <MenuItem
                 key={name}
                 value={name}
-                style={getStyles(name, data.selected, theme)}
+                style={getStyles(name, products, theme)}
               >
                 {name}
               </MenuItem>
