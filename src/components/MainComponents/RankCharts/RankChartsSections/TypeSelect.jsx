@@ -9,13 +9,12 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Box from '@material-ui/core/Box';
 
 import {
   selectProducts,
   deleteChip,
-  chartData,
+  SelectChartData,
 } from '../../../../actions/rankActions';
 
 const ITEM_HEIGHT = 48;
@@ -53,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TypeSelect = ({ data }) => {
   const [category, setCategory] = useState('');
+  const [products, setProducts] = useState([]);
 
   const classes = useStyles();
   const theme = useTheme();
@@ -72,7 +72,7 @@ const TypeSelect = ({ data }) => {
   const handleChangeCategory = (event) => {
     const category = event.target.value;
     setCategory(category);
-    dispatch(selectProducts([]));
+    setProducts([]);
   };
 
   const handleChangeProduct = (event) => {
@@ -82,9 +82,11 @@ const TypeSelect = ({ data }) => {
 
     const productNames = typeof value === 'string' ? value.split(',') : value;
     dispatch(
-      chartData(data.products.filter((p) => productNames.includes(p.name)))
+      SelectChartData(
+        data.products.filter((p) => productNames.includes(p.name))
+      )
     );
-    dispatch(selectProducts(productNames));
+    setProducts(productNames);
   };
 
   const handleDeleteChip = (event) => {
@@ -92,11 +94,9 @@ const TypeSelect = ({ data }) => {
       target: { innerText },
     } = event;
 
-    dispatch(deleteChip(innerText));
+    // dispatch(deleteChip(innerText));
+    setProducts(products.filter((name) => name !== innerText));
   };
-
-  console.log('selected', data.selected);
-  console.log('Filtered', filteredData);
 
   return (
     <>
@@ -128,7 +128,7 @@ const TypeSelect = ({ data }) => {
             labelId="select-product"
             id="select-product"
             multiple
-            value={data.selected}
+            value={products}
             onChange={handleChangeProduct}
             overflow="hidden"
             MenuProps={MenuProps}
@@ -145,7 +145,7 @@ const TypeSelect = ({ data }) => {
           </Select>
         </FormControl>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-          {data.selected.map((value) => (
+          {products.map((value) => (
             <Chip
               variant="outlined"
               key={value}
