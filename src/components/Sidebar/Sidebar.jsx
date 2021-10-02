@@ -1,11 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, List, Divider, Button, Hidden, Box } from '@material-ui/core';
+import { Drawer, List, Divider, Button, Hidden } from '@material-ui/core';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AssessmentIcon from '@material-ui/icons/Assessment';
@@ -91,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
   linkLabel: {
     padding: 0,
-    color: theme.palette.text.secondary + 'CC',
+    color: `${theme.palette.text.secondary}CC`,
     transition: theme.transitions.create(['opacity', 'color']),
     fontSize: 16,
   },
@@ -113,13 +114,13 @@ const Sidebar = ({
   const classes = useStyles();
   const history = useHistory();
 
-  let { url } = useRouteMatch();
+  const { url } = useRouteMatch();
 
-  const [expanded, setExpanded] = useState(false);
+  // const [expanded, setExpanded] = useState(false);
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
+  // const handleChange = (panel) => (event, isExpanded) => {
+  //   setExpanded(isExpanded ? panel : false);
+  // };
 
   const handleLogout = (event) => {
     event.preventDefault();

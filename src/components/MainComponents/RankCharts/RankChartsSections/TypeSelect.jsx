@@ -45,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+
+  chip: {
+    margin: theme.spacing(0.15),
+  },
 }));
 
 // .............................................................................................................
@@ -146,7 +150,8 @@ const TypeSelect = ({ data }) => {
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
           {products.map((value) => (
             <Chip
-              variant="outlined"
+              color="primary"
+              className={classes.chip}
               key={value}
               label={value}
               onClick={handleDeleteChip}
