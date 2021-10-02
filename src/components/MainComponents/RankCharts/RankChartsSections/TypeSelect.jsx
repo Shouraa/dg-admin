@@ -10,11 +10,7 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import Box from '@material-ui/core/Box';
 
-import {
-  // selectProducts,
-  deleteChip,
-  selectChartData,
-} from '../../../../actions/rankActions';
+import { deleteChip, selectChartData } from '../../../../actions/rankActions';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -84,6 +80,7 @@ const TypeSelect = ({ data }) => {
     } = event;
 
     const productNames = typeof value === 'string' ? value.split(',') : value;
+
     dispatch(
       selectChartData(
         data.products.filter((p) => productNames.includes(p.name))

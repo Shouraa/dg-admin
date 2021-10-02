@@ -17,16 +17,16 @@ import {
 const dayjs = require('dayjs');
 dayjs().format();
 
+const randomColors = ['#5e4fa2', '#d53e4f', '#f46d43', '#fdae61', '#ffffbf'];
+
 // const jsonData = require('../../../../actions/data/pedals.json');
 
 const RanksLineChart = ({ data }) => {
-  // const [color, setColor] = useState('#ffffff');
+  const colorRandomizer = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 
-  // const colorRandomizer = () => {
-  //   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-
-  //   // setColor(randomColor);
-  // };
+    // setColor(randomColor);
+  };
   return (
     <>
       <ResponsiveContainer width="99%" aspect={2}>
@@ -54,14 +54,14 @@ const RanksLineChart = ({ data }) => {
             labelFormatter={(unixTime) => dayjs(unixTime).format('MMM DD')}
           />
           <Legend />
-          {data.map((p) => {
+          {data.map((p, index) => {
             return (
               <Line
                 key={p.name}
                 type="monotone"
                 data={p.rank}
                 dataKey="rank"
-                stroke="#8884d8"
+                stroke={randomColors[index % 20]}
                 strokeWidth="2"
                 dot={{
                   fill: '#2e4355',
@@ -70,7 +70,7 @@ const RanksLineChart = ({ data }) => {
                   r: 1,
                 }}
                 activeDot={{
-                  fill: '#2e4355',
+                  fill: 'white',
                   stroke: '#8884d8',
                   strokeWidth: 5,
                   r: 5,
