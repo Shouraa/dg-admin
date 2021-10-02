@@ -65,10 +65,6 @@ const RanksLineChart = ({ data }) => {
           />
           <CartesianGrid horizontal="true" vertical="" stroke="#ccc" />
           <Tooltip
-            payload={data.map((p, index) => ({
-              name: p.name,
-              id: p.name,
-            }))}
             contentStyle={{ backgroundColor: '#8884d8', color: '#fff' }}
             itemStyle={{ color: '#fff' }}
             cursor={false}

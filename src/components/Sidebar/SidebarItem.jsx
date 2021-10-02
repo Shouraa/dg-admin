@@ -4,12 +4,10 @@
 import React, { useState } from 'react';
 import {
   Collapse,
-  Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
 } from '@material-ui/core';
 // import { InboxIcon } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
@@ -87,7 +85,7 @@ const SidebarItem = ({
   children,
   isSidebarOpened,
   nested,
-  type,
+  // type,
 }) => {
   const classes = useStyles();
 
