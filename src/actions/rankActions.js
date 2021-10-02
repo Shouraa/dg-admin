@@ -1,6 +1,7 @@
 export const INIT_PEDAL_DATA = 'INIT_PEDAL_DATA';
 export const DELETE_CHIP = 'DELETE_CHIP';
 export const SELECT_CHART_DATA = 'SELECT_CHART_DATA';
+export const CLEAR_CHART_DATA = 'CLEAR_CHART_DATA';
 
 const jsonData = require('./data/pedals.json');
 
@@ -28,6 +29,14 @@ export const selectChartData = (array) => {
     dispatch({
       type: SELECT_CHART_DATA,
       payload: array,
+    });
+  };
+};
+
+export const clearChartData = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: CLEAR_CHART_DATA,
     });
   };
 };

@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import {
   Collapse,
@@ -39,7 +42,7 @@ const useStyles = makeStyles((theme) =>
     },
     linkIcon: {
       marginRight: theme.spacing(1),
-      color: theme.palette.text.secondary + '99',
+      color: `${theme.palette.text.secondary}99`,
       transition: theme.transitions.create('color'),
       width: 24,
       display: 'flex',
@@ -50,7 +53,7 @@ const useStyles = makeStyles((theme) =>
     },
     linkText: {
       padding: 0,
-      color: theme.palette.text.secondary + 'CC',
+      color: `${theme.palette.text.secondary}CC`,
       transition: theme.transitions.create(['opacity', 'color']),
       fontSize: 16,
     },

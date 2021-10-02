@@ -17,16 +17,23 @@ import {
 const dayjs = require('dayjs');
 dayjs().format();
 
-const randomColors = ['#5e4fa2', '#d53e4f', '#f46d43', '#fdae61', '#ffffbf'];
+const randomColors = [
+  '#5e4fa2',
+  '#d53e4f',
+  '#f46d43',
+  '#e7298a',
+  '#7570b3',
+  '#9e0142',
+  '#fee08b',
+  '#abdda4',
+  '#9e0142',
+  '#e6f598',
+  '#d62728',
+];
 
 // const jsonData = require('../../../../actions/data/pedals.json');
 
 const RanksLineChart = ({ data }) => {
-  const colorRandomizer = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-
-    // setColor(randomColor);
-  };
   return (
     <>
       <ResponsiveContainer width="99%" aspect={2}>
@@ -42,18 +49,40 @@ const RanksLineChart = ({ data }) => {
             domain={['auto', 'auto']}
             tick={{ fill: 'black' }}
             tickFormatter={(unixTime) => dayjs(unixTime).format('MMM YYYY')}
-            label={{ value: 'Pages', position: 'insideBottom', dy: 30 }}
+            // label={{ value: 'Pages', position: 'insideBottom', dy: 30 }}
           />
 
-          <YAxis type="number" dataKey="rank" domain={[0, 20000]} />
+          <YAxis
+            type="number"
+            // dataKey="rank"
+            domain={[0, 30000]}
+            label={{
+              value: 'Rank',
+              angle: -90,
+              position: 'insideLeft',
+              dy: 30,
+            }}
+          />
           <CartesianGrid horizontal="true" vertical="" stroke="#ccc" />
           <Tooltip
+            payload={data.map((p, index) => ({
+              name: p.name,
+              id: p.name,
+            }))}
             contentStyle={{ backgroundColor: '#8884d8', color: '#fff' }}
             itemStyle={{ color: '#fff' }}
             cursor={false}
             labelFormatter={(unixTime) => dayjs(unixTime).format('MMM DD')}
           />
-          <Legend />
+
+          <Legend
+            payload={data.map((p, index) => ({
+              id: p.name,
+              type: 'square',
+              value: p.name,
+              color: randomColors[index % 20],
+            }))}
+          />
           {data.map((p, index) => {
             return (
               <Line

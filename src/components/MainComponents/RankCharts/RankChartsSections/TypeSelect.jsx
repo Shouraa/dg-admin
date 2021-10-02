@@ -10,7 +10,11 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import Box from '@material-ui/core/Box';
 
-import { deleteChip, selectChartData } from '../../../../actions/rankActions';
+import {
+  deleteChip,
+  selectChartData,
+  clearChartData,
+} from '../../../../actions/rankActions';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -72,6 +76,7 @@ const TypeSelect = ({ data }) => {
     const category = event.target.value;
     setCategory(category);
     setProducts([]);
+    dispatch(clearChartData());
   };
 
   const handleChangeProduct = (event) => {
@@ -147,7 +152,7 @@ const TypeSelect = ({ data }) => {
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
           {products.map((value) => (
             <Chip
-              color="primary"
+              color="#f5f5f5"
               className={classes.chip}
               key={value}
               label={value}

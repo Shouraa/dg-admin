@@ -2,6 +2,7 @@ import {
   INIT_PEDAL_DATA,
   DELETE_CHIP,
   SELECT_CHART_DATA,
+  CLEAR_CHART_DATA,
 } from '../actions/rankActions';
 
 const initialState = {
@@ -28,6 +29,11 @@ const rankReducer = (state = initialState, action) => {
       return {
         ...state,
         selectChartData: action.payload,
+      };
+    case CLEAR_CHART_DATA:
+      return {
+        ...state,
+        selectChartData: initialState.selectChartData,
       };
 
     default:
