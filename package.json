@@ -249,6 +249,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
+    "axios": "^0.22.0",
     "caniuse-lite": "^1.0.30001245",
     "clsx": "^1.1.1",
     "dayjs": "^1.10.7",
@@ -256,6 +257,7 @@
     "electron-log": "^4.2.4",
     "electron-updater": "^4.3.4",
     "history": "^5.0.0",
+    "jwt-decode": "^3.1.2",
     "pettier": "^1.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
