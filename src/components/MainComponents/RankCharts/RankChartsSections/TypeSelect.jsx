@@ -10,6 +10,8 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import Box from '@material-ui/core/Box';
 
+import UploadFile from './UploadFile';
+
 import {
   deleteChip,
   selectChartData,
@@ -48,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
 
   chip: {
     margin: theme.spacing(0.15),
+  },
+
+  button: {
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(1),
   },
 }));
 
@@ -105,6 +112,7 @@ const TypeSelect = ({ data }) => {
 
   return (
     <>
+      <UploadFile />
       <div>
         <FormControl
           className={classes.formControl}

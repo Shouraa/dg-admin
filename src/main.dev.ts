@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-assign */
 /* eslint global-require: off, no-console: off */
 
 /**
@@ -16,7 +17,7 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -84,6 +85,7 @@ const createWindow = async () => {
     height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
+      enableRemoteModule: true,
       nodeIntegration: true,
       // contextIsolation: true,
     },
@@ -147,13 +149,25 @@ app.on('activate', () => {
   if (mainWindow === null) createWindow();
 });
 
-// .then(() => {
-//   installExtension(REDUX_DEVTOOLS)
-//     .then((name) => console.log(`Added Extension:  ${name}`))
-//     .catch((err) => console.log('An error occurred: ', err));
-// })
-// .then(() => {
-//   installExtension(REACT_DEVELOPER_TOOLS)
-//     .then((name) => console.log(`Added Extension:  ${name}`))
-//     .catch((err) => console.log('An error occurred: ', err));
-// })
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const uploadFile = async () => {
+  const files = await dialog.showOpenDialog({
+    properties: ['openFile'],
+    filters: [
+      { name: 'Text Files', extensions: ['txt'] },
+      { name: 'JSON Files', extensions: ['json'] },
+    ],
+  });
+
+  if (!files) {
+    return;
+  }
+
+  // const content = fs.readFileSync(file).toString();
+
+  console.log(files);
+};
+
+module.exports = {
+  uploadFile,
+};
