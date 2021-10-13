@@ -1,15 +1,15 @@
-export const INIT_PEDAL_DATA = 'INIT_PEDAL_DATA';
+export const INIT_RANK_DATA = 'INIT_RANK_DATA';
 export const DELETE_CHIP = 'DELETE_CHIP';
 export const SELECT_CHART_DATA = 'SELECT_CHART_DATA';
 export const CLEAR_CHART_DATA = 'CLEAR_CHART_DATA';
 
-const jsonData = require('./data/pedals.json');
+// const jsonData = require('./data/pedals.json');
 
-export const initializePedalData = () => {
+export const initializeRankData = (data) => {
   return async (dispatch) => {
-    const data = await jsonData.data;
+    // const data = await jsonData.data;
     dispatch({
-      type: INIT_PEDAL_DATA,
+      type: INIT_RANK_DATA,
       payload: data,
     });
   };

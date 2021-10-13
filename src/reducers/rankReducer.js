@@ -1,5 +1,5 @@
 import {
-  INIT_PEDAL_DATA,
+  INIT_RANK_DATA,
   DELETE_CHIP,
   SELECT_CHART_DATA,
   CLEAR_CHART_DATA,
@@ -12,7 +12,7 @@ const initialState = {
 
 const rankReducer = (state = initialState, action) => {
   switch (action.type) {
-    case INIT_PEDAL_DATA:
+    case INIT_RANK_DATA:
       return {
         ...state,
         products: action.payload,

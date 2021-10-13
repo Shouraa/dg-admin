@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-multi-assign */
 /* eslint global-require: off, no-console: off */
 
@@ -154,19 +156,30 @@ const uploadFile = async () => {
   const files = await dialog.showOpenDialog({
     properties: ['openFile'],
     filters: [
-      { name: 'Text Files', extensions: ['txt'] },
+      // { name: 'Text Files', extensions: ['txt'] },
       { name: 'JSON Files', extensions: ['json'] },
     ],
   });
 
-  if (!files || files.filePaths[0] === 'undefined') {
-    return;
+  // if (!files || files.filePaths[0] === 'undefined') {
+  //   return;
+  // }
+  if (files) {
+    const file: string | undefined = files.filePaths[0];
+
+    openFile(file);
   }
-  const file: string | undefined = files.filePaths[0];
 
+  // const content = fs.readFileSync(file).toString();
+
+  // console.log(content);
+};
+
+const openFile = (file: any) => {
   const content = fs.readFileSync(file).toString();
-
-  console.log(content);
+  const parsedData = JSON.parse(content);
+  const fileName = path.basename(file);
+  mainWindow?.webContents.send('file-opened', fileName, parsedData);
 };
 
 module.exports = {

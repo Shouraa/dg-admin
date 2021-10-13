@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Button, Box, LinearProgress, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { initializeRankData } from '../../../../actions/rankActions';
 
-const { remote } = require('electron');
+const { remote, ipcRenderer } = require('electron');
 
 const mainProcess = remote.require('./main.dev.ts');
 
@@ -18,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 const UploadFile = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [selectedFile, setSelectedFile] = useState(undefined);
   const [message, setMessage] = useState('');
@@ -44,6 +48,10 @@ const UploadFile = () => {
   const openFile = () => {
     mainProcess.uploadFile();
     console.log('you clicked the openfile button');
+    ipcRenderer.on('file-opened', (event, fileName, content) => {
+      setSelectedFile(fileName);
+      dispatch(initializeRankData(content));
+    });
   };
 
   return (
@@ -59,7 +67,7 @@ const UploadFile = () => {
           Import
         </Button>
         <Box>
-          <Typography marginLeft>FileName</Typography>
+          <Typography marginLeft>{selectedFile}</Typography>
         </Box>
       </Box>
       <Box sx={{ width: '100%' }}>

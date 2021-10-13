@@ -4,7 +4,7 @@ import { Box, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 // import clsx from 'clsx';
-import { initializePedalData } from '../../../actions/rankActions';
+// import { initializeRankData } from '../../../actions/rankActions';
 import TypeSelect from './RankChartsSections/TypeSelect';
 import RanksLineChart from './RankChartsSections/RanksLineChart';
 
@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
 const RankCharts = () => {
   const classes = useStyles();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const productRanks = useSelector((state) => state.ranks);
-  useEffect(() => {
-    dispatch(initializePedalData());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(initializeRankData());
+  // }, [dispatch]);
 
   return (
     <div className={classes.container}>

@@ -72,11 +72,11 @@ const TypeSelect = ({ data }) => {
   let filteredData = [];
 
   if (category === 'Pedal') {
-    filteredData = data.products.filter((p) => p.type === 'PEDAL');
+    filteredData = data.products.data.filter((p) => p.type === 'PEDAL');
   } else if (category === 'Amplifier') {
-    filteredData = data.products.filter((p) => p.type === 'HEAD');
+    filteredData = data.products.data.filter((p) => p.type === 'HEAD');
   } else if (category === 'Cabinet') {
-    filteredData = data.products.filter((p) => p.type === 'CAB');
+    filteredData = data.products.data.filter((p) => p.type === 'CAB');
   }
 
   const handleChangeCategory = (event) => {
@@ -95,7 +95,7 @@ const TypeSelect = ({ data }) => {
 
     dispatch(
       selectChartData(
-        data.products.filter((p) => productNames.includes(p.name))
+        data.products.data.filter((p) => productNames.includes(p.name))
       )
     );
     setProducts(productNames);
