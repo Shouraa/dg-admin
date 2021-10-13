@@ -2683,6 +2683,13 @@
   "resolved" "https://registry.npmjs.org/astral-regex/-/astral-regex-2.0.0.tgz"
   "version" "2.0.0"
 
+"async-csv@^2.1.3":
+  "integrity" "sha512-mpsCN+D7mzZeqrlDw7UTPhvDQDlx1i819E9fbKIt8drkgED5FSOlBv3Rk/+sXdevnO2wwlRkVOQ4kdT0AyqPqQ=="
+  "resolved" "https://registry.npmjs.org/async-csv/-/async-csv-2.1.3.tgz"
+  "version" "2.1.3"
+  dependencies:
+    "csv" "^5.1.3"
+
 "async-each@^1.0.1":
   "integrity" "sha512-z/WhQ5FPySLdvREByI2vZiTWwCnF0moMJ1hK9YQwDTHKh6I7/uSckMetoRGb5UBZPC1z0jlw+n/XCgjeH7y1AQ=="
   "resolved" "https://registry.npmjs.org/async-each/-/async-each-1.0.3.tgz"
@@ -4214,6 +4221,31 @@
   "integrity" "sha512-uVDi8LpBUKQj6sdxNaTetL6FpeCqTjOvAQuQUa/qAqq8oOd4ivkbhgnqayl0dnPal8Tb/yB1tF+gOvCBiicaiQ=="
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.0.5.tgz"
   "version" "3.0.5"
+
+"csv-generate@^3.4.3":
+  "integrity" "sha512-w/T+rqR0vwvHqWs/1ZyMDWtHHSJaN06klRqJXBEpDJaM/+dZkso0OKh1VcuuYvK3XM53KysVNq8Ko/epCK8wOw=="
+  "resolved" "https://registry.npmjs.org/csv-generate/-/csv-generate-3.4.3.tgz"
+  "version" "3.4.3"
+
+"csv-parse@^4.16.3":
+  "integrity" "sha512-cO1I/zmz4w2dcKHVvpCr7JVRu8/FymG5OEpmvsZYlccYolPBLoVGKUHgNoc4ZGkFeFlWGEDmMyBM+TTqRdW/wg=="
+  "resolved" "https://registry.npmjs.org/csv-parse/-/csv-parse-4.16.3.tgz"
+  "version" "4.16.3"
+
+"csv-stringify@^5.6.5":
+  "integrity" "sha512-PjiQ659aQ+fUTQqSrd1XEDnOr52jh30RBurfzkscaE2tPaFsDH5wOAHJiw8XAHphRknCwMUE9KRayc4K/NbO8A=="
+  "resolved" "https://registry.npmjs.org/csv-stringify/-/csv-stringify-5.6.5.tgz"
+  "version" "5.6.5"
+
+"csv@^5.1.3":
+  "integrity" "sha512-QTaY0XjjhTQOdguARF0lGKm5/mEq9PD9/VhZZegHDIBq2tQwgNpHc3dneD4mGo2iJs+fTKv5Bp0fZ+BRuY3Z0g=="
+  "resolved" "https://registry.npmjs.org/csv/-/csv-5.5.3.tgz"
+  "version" "5.5.3"
+  dependencies:
+    "csv-generate" "^3.4.3"
+    "csv-parse" "^4.16.3"
+    "csv-stringify" "^5.6.5"
+    "stream-transform" "^2.1.3"
 
 "currently-unhandled@^0.4.1":
   "integrity" "sha1-mI3zP+qxke95mmE2nddsF635V+o="
@@ -8593,6 +8625,11 @@
     "for-in" "^1.0.2"
     "is-extendable" "^1.0.1"
 
+"mixme@^0.5.1":
+  "integrity" "sha512-3KYa4m4Vlqx98GPdOHghxSdNtTvcP8E0kkaJ5Dlh+h2DRzF7zpuVVcA8B0QpKd11YJeP9QQ7ASkKzOeu195Wzw=="
+  "resolved" "https://registry.npmjs.org/mixme/-/mixme-0.5.4.tgz"
+  "version" "0.5.4"
+
 "mkdirp@^0.5.0", "mkdirp@^0.5.1", "mkdirp@^0.5.4", "mkdirp@^0.5.5", "mkdirp@~0.5.1":
   "integrity" "sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ=="
   "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.5.tgz"
@@ -9073,6 +9110,13 @@
     "es-abstract" "^1.17.0-next.1"
     "function-bind" "^1.1.1"
     "has" "^1.0.3"
+
+"objects-to-csv@^1.3.6":
+  "integrity" "sha512-383eSpS3hmgCksW85KIqBtcbgSW5DDVsCmzLoM6C3q4yzOX2rmtWxF4pbLJ76fz+ufA+4/SwAT4QdaY6IUWmAg=="
+  "resolved" "https://registry.npmjs.org/objects-to-csv/-/objects-to-csv-1.3.6.tgz"
+  "version" "1.3.6"
+  dependencies:
+    "async-csv" "^2.1.3"
 
 "obuf@^1.0.0", "obuf@^1.1.2":
   "integrity" "sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg=="
@@ -11551,6 +11595,13 @@
     "readable-stream" "^2.3.6"
     "to-arraybuffer" "^1.0.0"
     "xtend" "^4.0.0"
+
+"stream-transform@^2.1.3":
+  "integrity" "sha512-9GHUiM5hMiCi6Y03jD2ARC1ettBXkQBoQAe7nJsPknnI0ow10aXjTnew8QtYQmLjzn974BnmWEAJgCY6ZP1DeQ=="
+  "resolved" "https://registry.npmjs.org/stream-transform/-/stream-transform-2.1.3.tgz"
+  "version" "2.1.3"
+  dependencies:
+    "mixme" "^0.5.1"
 
 "string_decoder@^1.0.0", "string_decoder@^1.1.1":
   "integrity" "sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA=="

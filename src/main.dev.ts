@@ -152,6 +152,7 @@ app.on('activate', () => {
   if (mainWindow === null) createWindow();
 });
 
+// upload file functionality
 const uploadFile = async () => {
   const files = await dialog.showOpenDialog({
     properties: ['openFile'],
@@ -161,14 +162,12 @@ const uploadFile = async () => {
     ],
   });
 
-  // if (!files || files.filePaths[0] === 'undefined') {
-  //   return;
-  // }
-  if (files) {
-    const file: string | undefined = files.filePaths[0];
-
-    openFile(file);
+  if (!files || files.filePaths[0] === 'undefined') {
+    return;
   }
+  const file: string | undefined = files.filePaths[0];
+
+  openFile(file);
 
   // const content = fs.readFileSync(file).toString();
 
@@ -182,6 +181,23 @@ const openFile = (file: any) => {
   mainWindow?.webContents.send('file-opened', fileName, parsedData);
 };
 
+// save file functionality
+
+const saveCSV = async (targetWindow: any, content: any) => {
+  const file: any = await dialog.showSaveDialog(targetWindow, {
+    title: 'Save CSV',
+    defaultPath: app.getPath('documents'),
+    nameFieldLabel: '.csv',
+    filters: [{ name: 'CSV Files', extensions: ['csv'] }],
+  });
+  if (!file.filePath) return;
+
+  console.log(file);
+
+  fs.writeFileSync(file.filePath, content);
+};
+
 module.exports = {
   uploadFile,
+  saveCSV,
 };
