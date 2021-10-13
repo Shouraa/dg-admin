@@ -26,7 +26,7 @@ const UploadFile = () => {
   const [selectedFile, setSelectedFile] = useState(undefined);
   const [message, setMessage] = useState('');
   const [isError, setIsError] = useState(false);
-  const [fileInfo, setFileInfo] = useState('');
+  // const [fileInfo, setFileInfo] = useState('');
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -49,6 +49,7 @@ const UploadFile = () => {
     mainProcess.uploadFile();
     console.log('you clicked the openfile button');
     ipcRenderer.on('file-opened', (event, fileName, content) => {
+      console.log('EVENT', event);
       setSelectedFile(fileName);
       dispatch(initializeRankData(content));
     });
@@ -66,12 +67,23 @@ const UploadFile = () => {
         >
           Import
         </Button>
-        <Box>
-          <Typography marginLeft>{selectedFile}</Typography>
+        <Box sx={{ marginLeft: 10 }}>
+          <Typography>{selectedFile}</Typography>
         </Box>
       </Box>
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: '100%', marginBottom: 20 }}>
         <LinearProgress variant="determinate" value="15" />
+      </Box>
+      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+        <Button
+          variant="contained"
+          size="small"
+          className={classes.button}
+          sx={{ p: 1, flexGrow: 1 }}
+          onClick={openFile}
+        >
+          Export .csv
+        </Button>
       </Box>
     </div>
   );

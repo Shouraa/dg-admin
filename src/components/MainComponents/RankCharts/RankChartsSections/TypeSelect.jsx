@@ -112,7 +112,10 @@ const TypeSelect = ({ data }) => {
 
   return (
     <>
-      <UploadFile />
+      <FormControl>
+        <UploadFile />
+      </FormControl>
+
       <div>
         <FormControl
           className={classes.formControl}
