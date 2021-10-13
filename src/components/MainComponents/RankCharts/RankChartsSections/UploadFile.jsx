@@ -4,8 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const { remote } = require('electron');
 
-// import { uploadFile } from '../../../../main.dev'
-
 const mainProcess = remote.require('./main.dev.ts');
 
 const useStyles = makeStyles((theme) => ({

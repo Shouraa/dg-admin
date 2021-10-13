@@ -20,6 +20,7 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
+import fs from 'fs';
 import MenuBuilder from './menu';
 
 export default class AppUpdater {
@@ -149,7 +150,6 @@ app.on('activate', () => {
   if (mainWindow === null) createWindow();
 });
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const uploadFile = async () => {
   const files = await dialog.showOpenDialog({
     properties: ['openFile'],
@@ -159,13 +159,14 @@ const uploadFile = async () => {
     ],
   });
 
-  if (!files) {
+  if (!files || files.filePaths[0] === 'undefined') {
     return;
   }
+  const file: string | undefined = files.filePaths[0];
 
-  // const content = fs.readFileSync(file).toString();
+  const content = fs.readFileSync(file).toString();
 
-  console.log(files);
+  console.log(content);
 };
 
 module.exports = {
