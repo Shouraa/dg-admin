@@ -4,7 +4,7 @@ import { Box, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 // import clsx from 'clsx';
-// import { initializeRankData } from '../../../actions/rankActions';
+// import { initializeRankData } from '../../../actions/ranks';
 import TypeSelect from './RankChartsSections/TypeSelect';
 import RanksLineChart from './RankChartsSections/RanksLineChart';
 

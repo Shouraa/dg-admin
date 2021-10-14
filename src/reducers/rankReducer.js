@@ -3,7 +3,7 @@ import {
   DELETE_CHIP,
   SELECT_CHART_DATA,
   CLEAR_CHART_DATA,
-} from '../actions/rankActions';
+} from '../actions/ranks';
 
 const initialState = {
   products: [],

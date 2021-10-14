@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Button, Box, LinearProgress, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { initializeRankData } from '../../../../actions/rankActions';
+import { initializeRankData } from '../../../../actions/ranks';
 
 const ObjectsToCsv = require('objects-to-csv');
 
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UploadFile = () => {
+const HandleFiles = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const chosenData = useSelector((state) => state.ranks.selectChartData);
@@ -53,7 +53,6 @@ const UploadFile = () => {
     mainProcess.uploadFile();
     console.log('you clicked the openfile button');
     ipcRenderer.on('file-opened', (event, fileName, content) => {
-      console.log('EVENT', event);
       setSelectedFile(fileName);
       dispatch(initializeRankData(content));
     });
@@ -65,7 +64,6 @@ const UploadFile = () => {
 
       // Return the CSV file as string:
       const csvString = await csv.toString();
-      console.log(csvString);
       mainProcess.saveCSV(currentWindow, csvString);
     })();
   };
@@ -104,4 +102,4 @@ const UploadFile = () => {
   );
 };
 
-export default UploadFile;
+export default HandleFiles;

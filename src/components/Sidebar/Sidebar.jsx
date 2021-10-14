@@ -152,12 +152,7 @@ const Sidebar = ({
         <Divider />
       </div>
 
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.logout}
-        onClick={handleLogout}
-      >
+      <Button variant="contained" color="primary" className={classes.logout}>
         log out
       </Button>
     </>

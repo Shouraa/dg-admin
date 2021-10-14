@@ -4,9 +4,11 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 import rankReducer from '../reducers/rankReducer';
+import { authReducer } from '../reducers/authReducer';
 
 const rootReducer = combineReducers({
   ranks: rankReducer,
+  auth: authReducer,
 });
 
 const middlewares = [thunk, logger];

@@ -3,7 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { NonAuthRoutes } from '../routes/paths';
 
-const loginComponent = lazy(() => import('../components/Login/Login'));
+const loginComponent = lazy(() => import('../components/Login/Auth'));
 
 const loading = <CircularProgress />;
 

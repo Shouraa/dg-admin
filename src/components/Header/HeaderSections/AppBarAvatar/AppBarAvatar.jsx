@@ -1,5 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useHistory } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -20,6 +23,9 @@ import {
 
 import { AccountCircle, Settings, ExitToApp } from '@material-ui/icons';
 import AvatarBadge from './AvatarBadge';
+
+import { logoutUser } from '../../../../actions/auth';
+
 import img from '../../../../../assets/HN.png';
 
 const useStyles = makeStyles(() => ({
@@ -36,6 +42,12 @@ const useStyles = makeStyles(() => ({
 
 const AppBarAvatar = (props) => {
   const classes = useStyles(props);
+  const profile = useSelector((state) => state.auth.authData.result.name);
+
+  console.log(profile);
+  const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
@@ -50,6 +62,10 @@ const AppBarAvatar = (props) => {
     }
 
     setOpen(false);
+  };
+
+  const handleLogOut = () => {
+    dispatch(logoutUser(history));
   };
 
   return (
@@ -80,7 +96,7 @@ const AppBarAvatar = (props) => {
           <ListItemText
             primary={
               <>
-                <Typography variant="subtitle2">John Doe</Typography>
+                <Typography variant="subtitle2">{profile}</Typography>
               </>
             }
           />
@@ -116,7 +132,7 @@ const AppBarAvatar = (props) => {
                     </ListItemIcon>
                     settings
                   </MenuItem>
-                  <MenuItem onClick={handleClose}>
+                  <MenuItem onClick={handleLogOut}>
                     <ListItemIcon className={classes.menuIcon}>
                       <ExitToApp fontSize="small" />
                     </ListItemIcon>

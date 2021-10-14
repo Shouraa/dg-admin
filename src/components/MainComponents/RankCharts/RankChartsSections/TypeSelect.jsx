@@ -10,13 +10,13 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import Box from '@material-ui/core/Box';
 
-import UploadFile from './UploadFile';
+import HandleFiles from './HandleFiles';
 
 import {
   deleteChip,
   selectChartData,
   clearChartData,
-} from '../../../../actions/rankActions';
+} from '../../../../actions/ranks';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -113,7 +113,7 @@ const TypeSelect = ({ data }) => {
   return (
     <>
       <FormControl>
-        <UploadFile />
+        <HandleFiles />
       </FormControl>
 
       <div>
