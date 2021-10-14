@@ -20,7 +20,7 @@ import {
 
 import { AccountCircle, Settings, ExitToApp } from '@material-ui/icons';
 import AvatarBadge from './AvatarBadge';
-import img from '../../../../../assets/icon.png';
+import img from '../../../../../assets/HN.png';
 
 const useStyles = makeStyles(() => ({
   inline: {
@@ -73,14 +73,14 @@ const AppBarAvatar = (props) => {
             }}
             variant="dot"
           >
-            <Avatar alt="MR" src={img} />
+            <Avatar alt="HN" src={img} />
           </AvatarBadge>
         </ListItemAvatar>
         <Hidden implementation="css" smDown>
           <ListItemText
             primary={
               <>
-                <Typography variant="subtitle2">Mark Richman</Typography>
+                <Typography variant="subtitle2">John Doe</Typography>
               </>
             }
           />
